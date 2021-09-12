@@ -1,18 +1,17 @@
 <template>
   <v-app>
     <component :is="layout">
-    <v-main>
-      <router-view />
-    </v-main>
+      <v-main>
+        <router-view />
+      </v-main>
     </component>
   </v-app>
 </template>
 
 <script>
-
-const defaultLayout = 'DefaultLayout'
+const defaultLayout = "DefaultLayout";
 export default {
-  components: { },
+  components: {},
   name: "App",
 
   data: () => ({
@@ -20,9 +19,9 @@ export default {
   }),
   computed: {
     layout() {
-      const layout = this.$route.meta.layout || defaultLayout
-      return () => import(`@/layouts/${layout}.vue`)
-    }
-  }
+      const layout = this.$route.meta.layout || defaultLayout;
+      return () => import(`@/layouts/${layout}.vue`);
+    },
+  },
 };
 </script>

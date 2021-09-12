@@ -1,20 +1,18 @@
 <template>
   <div>
-      <app-bar />
-    <slot/>
-
+    <app-bar />
+    <slot />
   </div>
 </template>
 
 <script>
 import AppBar from "../components/layout/AppBar.vue";
 export default {
-    components: {
-        AppBar
-    },
-}
+  components: {
+    AppBar,
+  },
+};
 </script>
 
 <style>
-
 </style>
