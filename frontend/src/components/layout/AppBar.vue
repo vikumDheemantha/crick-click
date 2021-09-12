@@ -27,8 +27,35 @@
       target="_blank"
       text
     >
-      <span class="mr-2">Latest Release</span>
-      <v-icon>mdi-open-in-new</v-icon>
+      <v-icon>mdi-account-circle</v-icon>
+      <span class="mr-2">Player</span>
+    </v-btn>
+
+    <v-btn
+      href="https://github.com/vuetifyjs/vuetify/releases/latest"
+      target="_blank"
+      text
+    >
+      <v-icon>mdi-account-group</v-icon>
+      <span class="mr-2">Team Manager</span>
+    </v-btn>
+
+    <v-btn
+      href="https://github.com/vuetifyjs/vuetify/releases/latest"
+      target="_blank"
+      text
+    >
+      <v-icon>mdi-tennis-ball</v-icon>
+      <span class="mr-2">Organizer</span>
+    </v-btn>
+
+    <v-btn
+      href="https://github.com/vuetifyjs/vuetify/releases/latest"
+      target="_blank"
+      text
+    >
+      <v-icon>mdi-account-circle</v-icon>
+      <span class="mr-2">User</span>
     </v-btn>
   </v-app-bar>
 </template>

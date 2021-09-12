@@ -1,4 +1,6 @@
-# frontend
+# Crick Click frontend application
+
+This is frotnend part of the application which is under development using vue.js and related technologies. Here we use vuetify as a main component library. use following guidelines to individually run a frontend as a seperate project.
 
 ## Project setup
 ```
