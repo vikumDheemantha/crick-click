@@ -4,7 +4,8 @@ import Home from "../views/Home.vue";
 
 Vue.use(VueRouter);
 
-const routes = [{
+const routes = [
+  {
     path: "/",
     name: "Home",
     component: Home,
@@ -18,6 +19,30 @@ const routes = [{
     component: () =>
       import( /* webpackChunkName: "about" */ "../views/About.vue"),
   },
+  {
+    path: "/teammanager",
+    name: "TeamManager",
+    component: () =>
+      import("../views/TeamManager.vue"),
+  },
+  {
+    path: "/team",
+    name: "Team",
+    component: () =>
+      import("../views/Team.vue"),
+  },
+  {
+    path: "/player",
+    name: "Player",
+    component: () =>
+      import("../views/Player.vue"),
+  },
+  {
+    path: "/matchorganizer",
+    name: "Match Organizer",
+    component: () =>
+      import("../views/MatchOrganizer.vue"),
+  }
 ];
 
 const router = new VueRouter({

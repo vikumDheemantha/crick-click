@@ -4,6 +4,8 @@ In Sri Lanka, there are plenty of cricketers who play matches all over the islan
 
 ## frontend
 
+> npm install
+
 crick click frotend is developed with the vue js and related technologies. to start the frontend as a development server go to the frontend and run the following command.
 
 > npm run serve
