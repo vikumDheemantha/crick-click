@@ -1,6 +1,6 @@
 <template>
   <section>
-    <v-parallax :src="image" height="1000">
+    <v-parallax :src="image" height="600">
       <v-layout column align-center justify-center class="white--text">
         <h1
           class="white--text mb-2 display-1 text-xs-center"
@@ -26,7 +26,7 @@
 export default {
   data() {
     return {
-      image: require('@/assets/img/home/header.jpeg'),
+      image: require("@/assets/img/home/header.jpeg"),
     };
   },
 };
