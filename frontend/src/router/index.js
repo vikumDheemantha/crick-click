@@ -51,6 +51,14 @@ const routes = [
     component: () =>
     import("../views/p-profile.vue"),
   },
+  { 
+    path: "/createOrganizer",
+    name: "CreateOrganizer",
+    
+    component: () =>
+    import( /* webpackChunkName: "CreateOrganizer" */ "../views/CreateOrganizer.vue"),
+  }
+ 
 ];
 
 const router = new VueRouter({
