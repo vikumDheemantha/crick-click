@@ -17,32 +17,28 @@ const routes = [
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
     component: () =>
-      import( /* webpackChunkName: "about" */ "../views/About.vue"),
+      import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
   {
     path: "/teammanager",
     name: "TeamManager",
-    component: () =>
-      import("../views/TeamManager.vue"),
+    component: () => import("../views/TeamManager.vue"),
   },
   {
     path: "/team",
     name: "Team",
-    component: () =>
-      import("../views/Team.vue"),
+    component: () => import("../views/Team.vue"),
   },
   {
     path: "/player",
     name: "Player",
-    component: () =>
-      import("../views/Player.vue"),
+    component: () => import("../views/Player.vue"),
   },
   {
     path: "/matchorganizer",
     name: "Match Organizer",
-    component: () =>
-      import("../views/MatchOrganizer.vue"),
-  }
+    component: () => import("../views/MatchOrganizer.vue"),
+  },
 ];
 
 const router = new VueRouter({
