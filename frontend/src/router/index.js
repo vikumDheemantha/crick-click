@@ -10,6 +10,7 @@ const routes = [
     name: "Home",
     component: Home,
   },
+
   {
     path: "/about",
     name: "About",
@@ -19,16 +20,19 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
+
   {
     path: "/teammanager",
     name: "TeamManager",
     component: () => import("../views/TeamManager.vue"),
   },
+
   {
     path: "/team",
     name: "Team",
     component: () => import("../views/Team.vue"),
   },
+
   {
     path: "/player",
     name: "Player",
@@ -37,7 +41,15 @@ const routes = [
   {
     path: "/matchorganizer",
     name: "Match Organizer",
-    component: () => import("../views/MatchOrganizer.vue"),
+    component: () =>
+    import("../views/MatchOrganizer.vue"),
+  },
+
+  {
+    path:"/p-profile",
+    name:"p-profile",
+    component: () =>
+    import("../views/p-profile.vue"),
   },
 ];
 
