@@ -1,7 +1,7 @@
 <template>
   <v-card>
     <v-card-title class="">
-      <div style="height: 30px;">
+      <div style="height: 30px">
         <span class="float-left">Match Name</span>
         <v-chip class="mt-1 float-right" color="primary" x-small>
           Oneday
