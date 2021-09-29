@@ -7,7 +7,7 @@
             <v-flex xs12 md4>
               <v-card class="elevation-0 transparent">
                 <v-card-text class="text-center">
-                  <v-icon x-large class="blue--text text--lighten-2"
+                  <v-icon x-large class="primary--text text--lighten-2"
                     >mdi-account-circle</v-icon
                   >
                 </v-card-text>
@@ -27,7 +27,7 @@
             <v-flex xs12 md4>
               <v-card class="elevation-0 transparent">
                 <v-card-text class="text-center">
-                  <v-icon x-large class="blue--text text--lighten-2"
+                  <v-icon x-large class="primary--text text--lighten-2"
                     >mdi-account-circle</v-icon
                   >
                 </v-card-text>
@@ -47,7 +47,7 @@
             <v-flex xs12 md4>
               <v-card class="elevation-0 transparent">
                 <v-card-text class="text-center">
-                  <v-icon x-large class="blue--text text--lighten-2"
+                  <v-icon x-large class="primary--text text--lighten-2"
                     >mdi-account-circle</v-icon
                   >
                 </v-card-text>

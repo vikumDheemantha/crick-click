@@ -36,11 +36,23 @@
         </v-col>
       </v-row>
       <div class="text-caption text-center grey--text pt-0">
-        started At 08:20 AM
+        T1 WON BY 7 RUNS
       </div>
-    </v-card-text>
-    <v-card-text class="grey--text font-weight-medium px-2 py-2">
-      Venue: R. Premadasa Stadium
+      <v-row>
+        <v-col cols="5" class="text-center">
+          <div class="text-h5 grey--text font-weight-medium mark-txt">248-5</div>
+          <div class="text-subtitle-2 grey--text font-weight-medium">
+            50.0(50)
+          </div>
+        </v-col>
+        <v-spacer />
+        <v-col cols="5" class="text-center">
+          <div class="text-h5 grey--text font-weight-medium mark-txt">241-10</div>
+          <div class="text-subtitle-2 grey--text font-weight-medium">
+            45.5(50)
+          </div>
+        </v-col>
+      </v-row>
     </v-card-text>
   </v-card>
 </template>
@@ -58,5 +70,9 @@ export default {
 <style>
 .header-cls {
   width: 100%;
+}
+
+.mark-txt {
+  line-height: 1.5rem !important;
 }
 </style>
