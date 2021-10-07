@@ -8,7 +8,7 @@
 
 <script>
 import AppBar from "../components/layout/AppBar.vue";
-import FooterBar from '../components/layout/FooterBar.vue';
+import FooterBar from "../components/layout/FooterBar.vue";
 export default {
   components: {
     AppBar,

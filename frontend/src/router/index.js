@@ -41,24 +41,28 @@ const routes = [
   {
     path: "/matchorganizer",
     name: "Match Organizer",
-    component: () =>
-    import("../views/MatchOrganizer.vue"),
+    component: () => import("../views/MatchOrganizer.vue"),
   },
 
   {
-    path:"/p-profile",
-    name:"p-profile",
-    component: () =>
-    import("../views/p-profile.vue"),
+    path: "/p-profile",
+    name: "p-profile",
+    component: () => import("../views/p-profile.vue"),
   },
-  { 
+  {
+    path: "/player-prifile",
+    name: "p-profile",
+    component: () => import("../views/PlayerProfileView.vue"),
+  },
+  {
     path: "/createOrganizer",
     name: "CreateOrganizer",
-    
+
     component: () =>
-    import( /* webpackChunkName: "CreateOrganizer" */ "../views/CreateOrganizer.vue"),
-  }
- 
+      import(
+        /* webpackChunkName: "CreateOrganizer" */ "../views/CreateOrganizer.vue"
+      ),
+  },
 ];
 
 const router = new VueRouter({
