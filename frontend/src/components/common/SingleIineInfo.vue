@@ -5,15 +5,18 @@
       class="
         text-body-1
         primary--text
-        secondary
-        pl-2
+        grey
+        ml-1
+        mr-1
+        pl-3
         py-1
-        lighten-0
-        elevation-3
+        lighten-3
+        elevation-0
         font-weight-medium
+        value-custom-style
       "
     >
-      {{ value }}
+      <div class="value-custom-text">{{ value }}</div>
     </div>
   </div>
 </template>
@@ -34,4 +37,11 @@ export default {
 </script>
 
 <style>
+.value-custom-style {
+  transform: skew(-20deg);
+}
+
+.value-custom-text {
+  transform: skew(20deg);
+}
 </style>
