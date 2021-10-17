@@ -1,12 +1,21 @@
 <template>
   <section>
     <div class="strike">
-      <span class="text-h5 primary--text font-weight-medium">Ongoing matches</span>
+      <span class="text-h5 primary--text font-weight-medium"
+        >Ongoing matches</span
+      >
     </div>
     <v-container fluid>
       <v-row>
         <v-col cols="3" v-for="x in matches" :key="x">
-          <live-match-card />
+          <live-match-card
+            :name="x.name"
+            :type="x.type"
+            :location="x.location"
+            :team1="x.team1"
+            :team2="x.team2"
+            :startedAt="x.startedAt"
+          />
         </v-col>
       </v-row>
     </v-container>
@@ -14,14 +23,20 @@
 </template>
 
 <script>
+// import { collection, getDocs } from "firebase/firestore";
 import LiveMatchCard from "./LiveMatchCard.vue";
+// import { db } from "../../main";
+import { getAllMatches } from "../../firebase/matchs.firebase";
 export default {
   data() {
     return {
-      matches: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      matches: [],
     };
   },
   components: { LiveMatchCard },
+  async mounted() {
+    this.matches = await getAllMatches();
+  },
 };
 </script>
 

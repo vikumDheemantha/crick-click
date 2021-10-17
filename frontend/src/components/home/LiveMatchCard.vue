@@ -2,10 +2,11 @@
   <v-card>
     <v-card-title class="px-2 py-2">
       <div class="header-cls">
-        <span class="float-left text-subtitle-1 grey--text font-weight-medium"
-          >Match Name</span
+        <span
+          class="float-left text-subtitle-1 grey--text font-weight-medium"
+          >{{ name }}</span
         >
-        <span class="text-subtitle-1 float-right grey--text"> Oneday </span>
+        <span class="text-subtitle-1 float-right grey--text"> {{ type }} </span>
       </div>
     </v-card-title>
     <!-- <v-card-subtitle
@@ -18,9 +19,9 @@
             :aspect-ratio="1 / 1"
             :width="imageWidth"
             class="mx-auto"
-            src="https://cdn.vuetifyjs.com/images/parallax/material.jpg"
+            :src="team1.url"
           ></v-img>
-          <div class="text-subtitle-2 grey--text">Team -1</div>
+          <div class="text-subtitle-2 grey--text">{{ team1.name }}</div>
         </v-col>
         <v-col align-self="center" class="text-center">
           <div class="text-h5 font-weight-light grey--text">vs</div></v-col
@@ -30,23 +31,31 @@
             :aspect-ratio="1 / 1"
             :width="imageWidth"
             class="mx-auto"
-            src="https://cdn.vuetifyjs.com/images/parallax/material.jpg"
+            :src="team2.url"
           ></v-img>
-          <div class="text-subtitle-2 grey--text">Team -1</div>
+          <div class="text-subtitle-2 grey--text">{{ team2.name }}</div>
         </v-col>
       </v-row>
       <div class="text-caption text-center grey--text pt-0">
-        started At 08:20 AM
+        started At {{ startedAt }}
       </div>
     </v-card-text>
     <v-card-text class="grey--text font-weight-medium px-2 py-2">
-      Venue: R. Premadasa Stadium
+      Venue: {{ location }}
     </v-card-text>
   </v-card>
 </template>
 
 <script>
 export default {
+  props: {
+    name: String,
+    type: String,
+    startedAt: String,
+    location: String,
+    team1: Object,
+    team2: Object,
+  },
   data() {
     return {
       imageWidth: "60%",

@@ -52,7 +52,13 @@
       </div>
       <v-card-text>
         <v-row>
-          <v-col cols="6" v-for="(achievement, i) in achievements" :key="i">
+          <v-col
+            cols="6"
+            md="6"
+            xl="4"
+            v-for="(achievement, i) in achievements"
+            :key="i"
+          >
             <achievement-card
               :title="achievement.title"
               :description="achievement.desciptoin"
