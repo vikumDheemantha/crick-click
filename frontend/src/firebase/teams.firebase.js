@@ -51,6 +51,22 @@ export const getTeamsByOwner = async (id) => {
   }
 };
 
+/* Get Teams by player */
+export const getTeamsByPlayer = async (plyerId) => {
+  const teamsOwnedByQuery = query(
+    collection(db, "teams"),
+    where("players", "array-contains", `/players/${plyerId}`)
+  );
+
+  try {
+    const queryTeamsSnapshot = await getDocs(teamsOwnedByQuery);
+    return passTeams(queryTeamsSnapshot);
+  } catch (error) {
+    console.error("Error fetching data from the firebase: ", error);
+    return [];
+  }
+}
+
 function passTeams(teamsSnapshot) {
   let teams = [];
   teamsSnapshot.forEach(async (doc) => {
