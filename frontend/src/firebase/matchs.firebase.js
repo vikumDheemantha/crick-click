@@ -10,8 +10,8 @@ export const getAllMatches = async () => {
     const querySnapshot = await getDocs(collection(db, "matches")); // connect to the firebase and get query snapshot
     querySnapshot.forEach(async (doc) => {
       // itterate through all the document of the collection
-      let teamPromise1 = getDoc(doc.data().team1); // get the teams by teh refernece
-      let teamPromise2 = getDoc(doc.data().team1);
+      let teamPromise1 = getDoc(doc.data().team1); // get the teams by the refernece
+      let teamPromise2 = getDoc(doc.data().team2);
 
       let teamValues = await Promise.all([teamPromise1, teamPromise2]); // actually wait for the reference to load
       let teamd1 = teamValues[0].exists() ? teamValues[0].data() : false;
