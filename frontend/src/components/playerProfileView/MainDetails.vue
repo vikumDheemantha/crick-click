@@ -53,9 +53,10 @@
       <v-card-text>
         <v-row>
           <v-col
-            cols="6"
+            cols="12"
             md="6"
             xl="4"
+            xs="12"
             v-for="(achievement, i) in achievements"
             :key="i"
           >
