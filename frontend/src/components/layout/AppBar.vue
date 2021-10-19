@@ -42,7 +42,7 @@
         <v-list-item to="/player/my-profile">
           <v-list-item-title>My Profile</v-list-item-title>
         </v-list-item>
-        <v-list-item>
+        <v-list-item to="/players">
           <v-list-item-title>View Players</v-list-item-title>
         </v-list-item>
       </v-list>

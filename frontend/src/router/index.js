@@ -56,9 +56,9 @@ const routes = [
     component: () => import("../views/PlayerProfileView.vue"),
   },
   {
-    path: "/player/search",
-    name: "player-search",
-    component: () => import("../views/PlayerProfileView.vue"),
+    path: "/players",
+    name: "player-list",
+    component: () => import("../views/PlayerList.vue"),
   },
   {
     path: "/organizer-profile",

@@ -8,7 +8,7 @@
       v-for="(skill, i) in skills"
       :key="i"
       color="secondary"
-      class="primary--text mx-1 font-weight-medium"
+      class="primary--text mx-1 mt-3 font-weight-medium"
       small
     >
       {{ skill }}
