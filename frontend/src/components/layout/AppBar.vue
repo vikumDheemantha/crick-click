@@ -22,16 +22,31 @@
 
     <v-spacer></v-spacer>
 
-    <v-btn
-      href="https://github.com/vuetifyjs/vuetify/releases/latest"
-      target="_blank"
-      color="secondary"
-      depressed
-      class="primary--text nav-btn-custom"
-    >
-      <v-icon class="nav-btn-text">mdi-cricket</v-icon>
-      <span class="mr-2 ml-2 nav-btn-text">Player</span>
-    </v-btn>
+    <v-menu close-on-click offset-y>
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn
+          color="secondary"
+          depressed
+          class="primary--text nav-btn-custom"
+          v-bind="attrs"
+          v-on="on"
+        >
+          <v-icon class="nav-btn-text">mdi-cricket</v-icon>
+          <span class="mr-2 ml-2 nav-btn-text">Player</span>
+        </v-btn>
+      </template>
+      <v-list>
+        <v-list-item to="/player/create">
+          <v-list-item-title>Create Player Profile</v-list-item-title>
+        </v-list-item>
+        <v-list-item to="/player/my-profile">
+          <v-list-item-title>My Profile</v-list-item-title>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-title>View Players</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
 
     <v-btn
       href="https://github.com/vuetifyjs/vuetify/releases/latest"
@@ -44,16 +59,31 @@
       <span class="mr-2 ml-2 nav-btn-text">Team Manager</span>
     </v-btn>
 
-    <v-btn
-      href="https://github.com/vuetifyjs/vuetify/releases/latest"
-      target="_blank"
-      color="secondary"
-      depressed
-      class="primary--text ml-4 nav-btn-custom"
-    >
-      <v-icon class="nav-btn-text">mdi-domain</v-icon>
-      <span class="mr-2 ml-2 nav-btn-text">Organizer</span>
-    </v-btn>
+    <v-menu close-on-click offset-y>
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn
+          color="secondary"
+          depressed
+          v-bind="attrs"
+          v-on="on"
+          class="primary--text ml-4 nav-btn-custom"
+        >
+          <v-icon class="nav-btn-text">mdi-domain</v-icon>
+          <span class="mr-2 ml-2 nav-btn-text">Organizer</span>
+        </v-btn>
+      </template>
+      <v-list>
+        <v-list-item to="/player/create">
+          <v-list-item-title>Create Organization</v-list-item-title>
+        </v-list-item>
+        <v-list-item to="/organization/my-organization">
+          <v-list-item-title>My Organization</v-list-item-title>
+        </v-list-item>
+        <v-list-item>
+          <v-list-item-title>View Organizations</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
 
     <v-btn
       href="https://github.com/vuetifyjs/vuetify/releases/latest"

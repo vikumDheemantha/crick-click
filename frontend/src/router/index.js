@@ -33,25 +33,36 @@ const routes = [
     component: () => import("../views/Team.vue"),
   },
 
+  // organizer content
   {
-    path: "/player",
-    name: "Player",
-    component: () => import("../views/Player.vue"),
-  },
-  {
-    path: "/matchorganizer",
+    path: "/organizer/manage",
     name: "Match Organizer",
     component: () => import("../views/MatchOrganizer.vue"),
   },
-
   {
-    path: "/p-profile",
+    path: "/organization/my-organization",
+    name: "Match Organizer",
+    component: () => import("../views/OrganizerProfileView.vue"),
+  },
+  // player content
+  {
+    path: "/player/create",
     name: "p-profile",
     component: () => import("../views/p-profile.vue"),
   },
   {
-    path: "/player-prifile",
-    name: "p-profile",
+    path: "/player/my-profile",
+    name: "player-profile",
+    component: () => import("../views/PlayerProfileView.vue"),
+  },
+  {
+    path: "/player/search",
+    name: "player-search",
+    component: () => import("../views/PlayerProfileView.vue"),
+  },
+  {
+    path: "/organizer-profile",
+    name: "organizer-profile",
     component: () => import("../views/PlayerProfileView.vue"),
   },
   {

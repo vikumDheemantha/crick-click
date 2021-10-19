@@ -1,26 +1,35 @@
 <template>
-  <v-footer :padless="padless">
-    <v-card flat tile width="100%" class="grey--text text-center custom-footer">
-      <v-card-text>
-        <span class="grey--text text-center footer-text  text--lighten-1"
-          >2021 © Crick Click | Powered by HexaCoders</span
-        >
-        <span class="float-right">
-          <v-btn
-            v-for="icon in icons"
-            :key="icon"
-            class="mx-4 grey--text text--lighten-1"
-            icon
+  <div>
+    <div :style="{ marginTop: footerHeight }">
+    </div>
+    <v-footer :padless="padless" absolute ref="realFooter">
+      <v-card
+        flat
+        tile
+        width="100%"
+        class="grey--text text-center custom-footer"
+      >
+        <v-card-text>
+          <span class="grey--text text-center footer-text text--lighten-1"
+            >2021 © Crick Click | Powered by HexaCoders</span
           >
-            <v-icon size="24px">
-              {{ icon }}
-            </v-icon>
-          </v-btn>
-        </span>
-        <div class="float-none" style="clear: both"></div>
-      </v-card-text>
-    </v-card>
-  </v-footer>
+          <span class="float-right">
+            <v-btn
+              v-for="icon in icons"
+              :key="icon"
+              class="mx-4 grey--text text--lighten-1"
+              icon
+            >
+              <v-icon size="24px">
+                {{ icon }}
+              </v-icon>
+            </v-btn>
+          </span>
+          <div class="float-none" style="clear: both"></div>
+        </v-card-text>
+      </v-card>
+    </v-footer>
+  </div>
 </template>
 
 <script>
@@ -30,6 +39,7 @@ export default {
       padless: true,
       icons: ["mdi-facebook", "mdi-twitter", "mdi-instagram", "mdi-linkedin"],
       variant: "default",
+      footerHeight: "100px",
     };
   },
 };

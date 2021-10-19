@@ -2,12 +2,12 @@
   <v-container class="pt-10">
     <v-row class="pt-10">
       <v-col cols="4">
-        <profile-pic-display name="T.M. Dilshan" :skills="skills" />
+        <profile-pic-display :name="name" />
         <social-media-card :items="socialMediaItems" />
-        <stat-summery />
       </v-col>
       <v-col cols="8">
-        <main-details />
+        <details-card />
+        <contact-card />
       </v-col>
     </v-row>
   </v-container>
@@ -16,14 +16,15 @@
 <script>
 import ProfilePicDisplay from "../components/common/ProfilePicDisplay.vue";
 import SocialMediaCard from "../components/common/SocialMediaCard.vue";
-import MainDetails from "../components/playerProfileView/MainDetails.vue";
-import StatSummery from "../components/playerProfileView/StatSummery.vue";
+import ContactCard from "../components/organizationProfileView/ContactCard.vue";
+import DetailsCard from "../components/organizationProfileView/DetailsCard.vue";
+
 export default {
-  components: { ProfilePicDisplay, SocialMediaCard, StatSummery, MainDetails },
+  components: { ProfilePicDisplay, SocialMediaCard, DetailsCard, ContactCard },
 
   data() {
     return {
-      skills: ["Batsman", "Bowler"],
+      name: "ABC Organization",
       socialMediaItems: [
         {
           id: 1,
