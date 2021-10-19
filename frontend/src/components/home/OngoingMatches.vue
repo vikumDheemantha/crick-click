@@ -7,7 +7,16 @@
     </div>
     <v-container fluid>
       <v-row>
-        <v-col cols="3" v-for="x in matches" :key="x">
+        <v-col
+          cols="12"
+          xs="12"
+          sm="6"
+          md="4"
+          lg="4"
+          xl="3"
+          v-for="x in matches"
+          :key="x"
+        >
           <live-match-card
             :name="x.name"
             :type="x.type"

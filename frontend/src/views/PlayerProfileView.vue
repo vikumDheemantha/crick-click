@@ -1,12 +1,18 @@
 <template>
   <v-container class="pt-10">
     <v-row class="pt-10">
-      <v-col cols="4">
+      <v-col cols="12" sm="12" md="4">
         <profile-pic-display name="T.M. Dilshan" :skills="skills" />
-        <social-media-card :items="socialMediaItems" />
-        <stat-summery />
+        <v-row class="mt-sm-5 mt-md-0">
+          <v-col cols="12" xs="12" sm="6" md="12">
+            <social-media-card :items="socialMediaItems" />
+          </v-col>
+          <v-col cols="12" xs="12" sm="6" md="12">
+            <stat-summery />
+          </v-col>
+        </v-row>
       </v-col>
-      <v-col cols="8">
+      <v-col cols="12" sm="12" md="8">
         <main-details />
       </v-col>
     </v-row>

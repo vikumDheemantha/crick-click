@@ -110,55 +110,63 @@ export default {
 </script>
 
 <style>
-.nav-header {
-  width: 100%;
-  height: 100%;
+@media screen and (min-width: 600px) {
+  .nav-header {
+    width: 100%;
+    height: 100%;
 
-  background: #fcfcfc;
-  background: -moz-linear-gradient(
-    -45deg,
-    #fcfcfc 0%,
-    #fcfcfc 75%,
-    #1d1e2c 75%,
-    #1d1e2c 100%
-  );
-  background: -webkit-gradient(
-    left top,
-    right bottom,
-    color-stop(0%, #fcfcfc),
-    color-stop(75%, #fcfcfc),
-    color-stop(75%, #1d1e2c),
-    color-stop(100%, #1d1e2c)
-  );
-  background: -webkit-linear-gradient(
-    -45deg,
-    #fcfcfc 0%,
-    #fcfcfc 75%,
-    #1d1e2c 75%,
-    #1d1e2c 100%
-  );
-  background: -o-linear-gradient(
-    -45deg,
-    #fcfcfc 0%,
-    #fcfcfc 75%,
-    #1d1e2c 75%,
-    #1d1e2c 100%
-  );
-  background: -ms-linear-gradient(
-    -45deg,
-    #fcfcfc 0%,
-    #fcfcfc 51%,
-    #1d1e2c 51%,
-    #1d1e2c 100%
-  );
-  background: linear-gradient(
-    -45deg,
-    #fcfcfc 0%,
-    #fcfcfc 75%,
-    #1d1e2c 75%,
-    #1d1e2c 100%
-  );
-  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ba2737', endColorstr='#efc5ca', GradientType=1);
+    background: #fcfcfc;
+    background: -moz-linear-gradient(
+      -45deg,
+      #fcfcfc 0%,
+      #fcfcfc 75%,
+      #1d1e2c 75%,
+      #1d1e2c 100%
+    );
+    background: -webkit-gradient(
+      left top,
+      right bottom,
+      color-stop(0%, #fcfcfc),
+      color-stop(75%, #fcfcfc),
+      color-stop(75%, #1d1e2c),
+      color-stop(100%, #1d1e2c)
+    );
+    background: -webkit-linear-gradient(
+      -45deg,
+      #fcfcfc 0%,
+      #fcfcfc 75%,
+      #1d1e2c 75%,
+      #1d1e2c 100%
+    );
+    background: -o-linear-gradient(
+      -45deg,
+      #fcfcfc 0%,
+      #fcfcfc 75%,
+      #1d1e2c 75%,
+      #1d1e2c 100%
+    );
+    background: -ms-linear-gradient(
+      -45deg,
+      #fcfcfc 0%,
+      #fcfcfc 51%,
+      #1d1e2c 51%,
+      #1d1e2c 100%
+    );
+    background: linear-gradient(
+      -45deg,
+      #fcfcfc 0%,
+      #fcfcfc 75%,
+      #1d1e2c 75%,
+      #1d1e2c 100%
+    );
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ba2737', endColorstr='#efc5ca', GradientType=1);
+  }
+}
+
+
+
+.nav-header {
+  background-color: #1d1e2c !important;
 }
 
 .nav-btn-custom {
