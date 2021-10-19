@@ -1,5 +1,61 @@
-import { collection, getDocs, getDoc, query, where } from "firebase/firestore";
+import {
+  collection,
+  getDocs,
+  getDoc,
+  query,
+  where,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  doc,
+} from "firebase/firestore";
 import { db } from "./main";
+
+/**
+ * adding new match
+ * @param {*} match
+ * @returns Id on success, -1 on failure
+ */
+export const addMatch = async (match) => {
+  try {
+    const docRef = await addDoc(collection(db, "matches"), match);
+    return docRef.id;
+  } catch (error) {
+    console.error("Error adding data to the firebase: ", error);
+  }
+  return -1;
+};
+
+/**
+ * Update match
+ * @param {*} match
+ * @returns true on succes false on failure
+ */
+export const updateMatch = async (match) => {
+  try {
+    const docRef = doc(db, "matches", match.id);
+    await updateDoc(docRef, match);
+    return true;
+  } catch (error) {
+    console.error("Error updating data to the firebase: ", error);
+    return false;
+  }
+};
+
+/**
+ * Delete match
+ * @param {*} matchId
+ * @returns true on succes false on failure
+ */
+export const deleteMatch = async (matchId) => {
+  try {
+    await deleteDoc(doc(db, "matches", matchId));
+    return true;
+  } catch (error) {
+    console.error("Error deleteing data to the firebase: ", error);
+    return false;
+  }
+};
 
 /* Create seperate function to get all matches, this is not a listner to live
  update this only fetch the data when it triggered and provide it to 

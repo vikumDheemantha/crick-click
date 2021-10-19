@@ -4,20 +4,32 @@ import { db } from "./main";
 /**
  * Adds new profile
  * @param {*} profile
- * @returns profile Id
+ * @returns profile Id on success -1 on fail
  */
 export const addProfile = async (profile) => {
-  const docRef = await addDoc(collection(db, "players"), profile);
-  return docRef.id;
+  try {
+    const docRef = await addDoc(collection(db, "players"), profile);
+    return docRef.id;
+  } catch (error) {
+    console.error("Error adding data to the firebase: ", error);
+  }
+  return -1;
 };
 
 /**
  * uptating existing profile
  * @param {*} profile
+ * @returns true on success, false on fail
  */
 export const updateProfle = async (profile) => {
-  const docRef = doc(db, "players", profile.id);
-  await updateDoc(docRef, profile);
+  try {
+    const docRef = doc(db, "players", profile.id);
+    await updateDoc(docRef, profile);
+    return true;
+  } catch (error) {
+    console.error("Error updating data to the firebase: ", error);
+    return false;
+  }
 };
 
 /**
