@@ -92,6 +92,14 @@ const routes = [
         /* webpackChunkName: "CreateOrganizer" */ "../views/CreateOrganizer.vue"
       ),
   },
+
+  // Match related routs
+
+  {
+    path: "/matches/list",
+    name: "Match List",
+    component: () => import("../views/MatchSearchView.vue"),
+  },
 ];
 
 const router = new VueRouter({

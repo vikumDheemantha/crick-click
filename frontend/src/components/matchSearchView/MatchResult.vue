@@ -1,9 +1,11 @@
 <template>
-  <section class="mt-5">
+  <div class="mt-3">
     <div class="strike">
-      <span class="text-h5 primary--text font-weight-medium">Past matches</span>
+      <span class="text-overline primary--text fon6-weight-medium"
+        >Search Result</span
+      >
     </div>
-    <v-container fluid>
+    <v-container>
       <v-row>
         <v-col
           cols="12"
@@ -18,24 +20,20 @@
           <history-match-card />
         </v-col>
       </v-row>
-      <div align="center" class="text-center mt-5">
-        <v-btn to="/matches/list" large color="primary" rounded
-          >Search More ...</v-btn
-        >
-      </div>
     </v-container>
-  </section>
+  </div>
 </template>
 
 <script>
-import HistoryMatchCard from "./HistoryMatchCard.vue";
+import HistoryMatchCard from "../home/HistoryMatchCard.vue";
+
 export default {
+  components: { HistoryMatchCard },
   data() {
     return {
       matches: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
     };
   },
-  components: { HistoryMatchCard },
 };
 </script>
 
@@ -58,7 +56,7 @@ export default {
   position: absolute;
   top: 50%;
   width: 9999px;
-  height: 3px;
+  height: 1px;
   background: #ffcf00;
 }
 
