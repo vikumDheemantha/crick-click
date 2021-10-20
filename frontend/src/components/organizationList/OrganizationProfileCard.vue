@@ -26,8 +26,8 @@ export default {
   components: { ProfilePicDisplay, SocialMediaInline },
   data() {
     return {
-      name: "Anglow Dilan",
-      skills: ["Batting", "bowling"],
+      name: "ABC Organization",
+      skills: ["Club"],
       socialMediaItems: [
         { id: 1, icon: "mdi-facebook", color: "#4267B2" },
         { id: 2, icon: "mdi-twitter", color: "lightblue" },
