@@ -21,6 +21,7 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
 
+  // Team related routs
   {
     path: "/teammanager",
     name: "TeamManager",
@@ -31,6 +32,12 @@ const routes = [
     path: "/team",
     name: "Team",
     component: () => import("../views/Team.vue"),
+  },
+
+  {
+    path: "/teams/profile/1",
+    name: "Team Profile",
+    component: () => import("../views/TeamProfileView.vue"),
   },
 
   // organizer content
