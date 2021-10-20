@@ -1,7 +1,7 @@
 <template>
   <v-container>
     <h3 class="primary--text my-5">All Players</h3>
-    <!-- <v-row> filter content for later </v-row> -->
+    <search-filter />
     <v-row>
       <v-col cols="12" md="8">
         <player-table />
@@ -17,8 +17,9 @@
 <script>
 import PlayerProfileCard from "../components/playerList/PlayerProfileCard.vue";
 import PlayerTable from "../components/playerList/PlayerTable.vue";
+import SearchFilter from "../components/playerList/SearchFilter.vue";
 export default {
-  components: { PlayerTable, PlayerProfileCard },
+  components: { PlayerTable, PlayerProfileCard, SearchFilter },
 };
 </script>
 
