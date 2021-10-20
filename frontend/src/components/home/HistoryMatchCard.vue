@@ -40,14 +40,18 @@
       </div>
       <v-row>
         <v-col cols="5" class="text-center">
-          <div class="text-h5 grey--text font-weight-medium mark-txt">248-5</div>
+          <div class="text-h5 grey--text font-weight-medium mark-txt">
+            248-5
+          </div>
           <div class="text-subtitle-2 grey--text font-weight-medium">
             50.0(50)
           </div>
         </v-col>
         <v-spacer />
         <v-col cols="5" class="text-center">
-          <div class="text-h5 grey--text font-weight-medium mark-txt">241-10</div>
+          <div class="text-h5 grey--text font-weight-medium mark-txt">
+            241-10
+          </div>
           <div class="text-subtitle-2 grey--text font-weight-medium">
             45.5(50)
           </div>
