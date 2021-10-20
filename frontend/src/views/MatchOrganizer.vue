@@ -1,8 +1,8 @@
 <template>
-    <!-- root -->
-    <div>
-        <div>this is Match Organizer page wchich is under construction</div>
-    </div>
+  <!-- root -->
+  <div>
+    <div>this is Match Organizer page wchich is under construction</div>
+  </div>
 </template>
 
 <script>
@@ -13,6 +13,4 @@ export default {
 };
 </script>
 
-<style scoped>
-
-</style>
+<style scoped></style>

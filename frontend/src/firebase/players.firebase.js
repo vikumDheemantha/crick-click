@@ -36,4 +36,4 @@ export const getPlayerById = async (id) => {
 export const getPlayerlayersByTeam = async (teamId) => {
   const team = getTeamBy(teamId);
   return team["players"] ?? {};
-}
+};
