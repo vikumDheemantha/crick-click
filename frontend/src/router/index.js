@@ -35,6 +35,12 @@ const routes = [
   },
 
   {
+    path: "/teams",
+    name: "Teams",
+    component: () => import("../views/TeamList.vue"),
+  },
+
+  {
     path: "/teams/profile/1",
     name: "Team Profile",
     component: () => import("../views/TeamProfileView.vue"),

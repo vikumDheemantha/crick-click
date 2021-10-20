@@ -69,7 +69,7 @@
         <v-list-item to="/teams/profile/1">
           <v-list-item-title>My Teams</v-list-item-title>
         </v-list-item>
-        <v-list-item to="/players">
+        <v-list-item to="/teams">
           <v-list-item-title>View All Teams</v-list-item-title>
         </v-list-item>
       </v-list>
