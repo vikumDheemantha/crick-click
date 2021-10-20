@@ -36,6 +36,7 @@
 import LiveMatchCard from "./LiveMatchCard.vue";
 // import { db } from "../../main";
 import { getAllMatches } from "../../firebase/matchs.firebase";
+
 export default {
   data() {
     return {

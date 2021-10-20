@@ -21,7 +21,7 @@
     </div>
 
     <v-spacer></v-spacer>
-
+    <!-- Players details -->
     <v-menu close-on-click offset-y>
       <template v-slot:activator="{ on, attrs }">
         <v-btn
@@ -59,6 +59,8 @@
       <span class="mr-2 ml-2 nav-btn-text">Team Manager</span>
     </v-btn>
 
+    <!-- Organization menu -->
+
     <v-menu close-on-click offset-y>
       <template v-slot:activator="{ on, attrs }">
         <v-btn
@@ -79,7 +81,7 @@
         <v-list-item to="/organization/my-organization">
           <v-list-item-title>My Organization</v-list-item-title>
         </v-list-item>
-        <v-list-item>
+        <v-list-item to="/organizations">
           <v-list-item-title>View Organizations</v-list-item-title>
         </v-list-item>
       </v-list>
@@ -162,8 +164,6 @@ export default {
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ba2737', endColorstr='#efc5ca', GradientType=1);
   }
 }
-
-
 
 .nav-header {
   background-color: #1d1e2c !important;

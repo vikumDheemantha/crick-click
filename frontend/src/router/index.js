@@ -44,6 +44,11 @@ const routes = [
     name: "Match Organizer",
     component: () => import("../views/OrganizerProfileView.vue"),
   },
+  {
+    path: "/organizations",
+    name: "Organization List",
+    component: () => import("../views/OrganizationList.vue"),
+  },
   // player content
   {
     path: "/player/create",
