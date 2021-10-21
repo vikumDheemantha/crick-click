@@ -15,7 +15,16 @@
           v-for="x in matches"
           :key="x"
         >
-          <history-match-card />
+          <history-match-card
+            :name="x.name"
+            :type="x.type"
+            :location="x.location"
+            :team1="x.team1"
+            :team2="x.team2"
+            :winner="x.winner"
+            :wonBy="x.wonBy"
+            :numberOfOvers="x.numberOfOvers"
+          />
         </v-col>
       </v-row>
     </v-container>
@@ -24,14 +33,28 @@
 
 <script>
 import HistoryMatchCard from "./HistoryMatchCard.vue";
+import { getPastMatches } from "../../firebase/matchs.firebase";
+
 export default {
   data() {
     return {
-      matches: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+      matches: [],
     };
   },
   components: { HistoryMatchCard },
+  async mounted() {
+    this.matches = await getPastMatches();
+  },
 };
+
+// export default {
+//   data() {
+//     return {
+//       matches: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
+//     };
+//   },
+//   components: { HistoryMatchCard },
+// };
 </script>
 
 <style>

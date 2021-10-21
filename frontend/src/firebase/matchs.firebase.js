@@ -66,8 +66,8 @@ export const getAllMatches = async () => {
     const querySnapshot = await getDocs(collection(db, "matches")); // connect to the firebase and get query snapshot
     querySnapshot.forEach(async (doc) => {
       // itterate through all the document of the collection
-      let teamPromise1 = getDoc(doc.data().team1); // get the teams by the refernece
-      let teamPromise2 = getDoc(doc.data().team2);
+      let teamPromise1 = getDoc(doc.data().team1.reference); // get the teams by the refernece
+      let teamPromise2 = getDoc(doc.data().team2.reference);
 
       let teamValues = await Promise.all([teamPromise1, teamPromise2]); // actually wait for the reference to load
       let teamd1 = teamValues[0].exists() ? teamValues[0].data() : false;
@@ -106,7 +106,7 @@ export const getAllMatches = async () => {
 export const getOngoingMatches = async () => {
   const ongoingMatchQuery = query(
     collection(db, "matches"),
-    where("status", "==", 1)
+    where("status", "==", 2) //TODO: change this to 1
   );
 
   let matches = []; // tempararly created to assign data later
@@ -114,8 +114,8 @@ export const getOngoingMatches = async () => {
     const querySnapshot = await getDocs(ongoingMatchQuery); // connect to the firebase and get query snapshot
     querySnapshot.forEach(async (doc) => {
       // itterate through all the document of the collection
-      let teamPromise1 = getDoc(doc.data().team1); // get the teams by teh refernece
-      let teamPromise2 = getDoc(doc.data().team1);
+      let teamPromise1 = getDoc(doc.data().team1.reference); // get the teams by teh refernece
+      let teamPromise2 = getDoc(doc.data().team1.reference);
 
       let teamValues = await Promise.all([teamPromise1, teamPromise2]); // actually wait for the reference to load
       let teamd1 = teamValues[0].exists() ? teamValues[0].data() : false;
@@ -162,12 +162,19 @@ export const getPastMatches = async () => {
     const querySnapshot = await getDocs(ongoingMatchQuery); // connect to the firebase and get query snapshot
     querySnapshot.forEach(async (doc) => {
       // itterate through all the document of the collection
-      let teamPromise1 = getDoc(doc.data().team1); // get the teams by teh refernece
-      let teamPromise2 = getDoc(doc.data().team1);
+      let teamPromise1 = getDoc(doc.data().team1.reference); // get the teams by teh refernece
+      let teamPromise2 = getDoc(doc.data().team1.reference);
+      let teamWinner = getDoc(doc.data().winner);
 
-      let teamValues = await Promise.all([teamPromise1, teamPromise2]); // actually wait for the reference to load
-      let teamd1 = teamValues[0].exists() ? teamValues[0].data() : false;
-      let teamd2 = teamValues[1].exists() ? teamValues[1].data() : false;
+      let teamValues = await Promise.all([
+        teamPromise1,
+        teamPromise2,
+        teamWinner,
+      ]); // actually wait for the reference to load
+
+      let team1 = teamValues[0].exists() ? teamValues[0].data() : false;
+      let team2 = teamValues[1].exists() ? teamValues[1].data() : false;
+      let winner = teamValues[2].exists() ? teamValues[2].data() : false;
 
       matches.push({
         id: doc.id,
@@ -176,20 +183,33 @@ export const getPastMatches = async () => {
         location: doc.data().locations,
         time: doc.data().date,
         startedAt: doc.data().startedTime.toDate().toLocaleTimeString("en-US"), // convert timstamp to datetime
-        team1: teamd1
+        numberOfOvers: doc.data().numberOfOvers,
+        team1: team1
           ? {
-              name: teamd1.name,
-              description: teamd1.description,
-              url: teamd1.logoUrl,
+              name: team1.name,
+              description: team1.description,
+              url: team1.logoUrl,
+              balls: doc.data().team1.numberOfBalls,
+              score: doc.data().team1.score,
+              wickets: doc.data().team1.wickets,
             }
           : {},
-        team2: teamd2
+        team2: team2
           ? {
-              name: teamd2.name,
-              description: teamd2.description,
-              url: teamd2.logoUrl,
+              name: team2.name,
+              description: team2.description,
+              url: team2.logoUrl,
+              balls: doc.data().team2.numberOfBalls,
+              score: doc.data().team2.score,
+              wickets: doc.data().team2.wickets,
             }
           : {},
+        winner: winner
+          ? {
+              name: winner.name,
+            }
+          : {},
+        wonBy: doc.data().wonBy,
       });
     });
     return matches;
@@ -211,8 +231,8 @@ export const getMatchesByTeam = async (teamId) => {
     const querySnapshot = await getDocs(ongoingMatchQuery); // connect to the firebase and get query snapshot
     querySnapshot.forEach(async (doc) => {
       // itterate through all the document of the collection
-      let teamPromise1 = getDoc(doc.data().team1); // get the teams by teh refernece
-      let teamPromise2 = getDoc(doc.data().team1);
+      let teamPromise1 = getDoc(doc.data().team1.reference); // get the teams by teh refernece
+      let teamPromise2 = getDoc(doc.data().team1.reference);
 
       let teamValues = await Promise.all([teamPromise1, teamPromise2]); // actually wait for the reference to load
       let teamd1 = teamValues[0].exists() ? teamValues[0].data() : false;
