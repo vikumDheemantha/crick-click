@@ -21,6 +21,7 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
 
+  // Team related routs
   {
     path: "/teammanager",
     name: "TeamManager",
@@ -31,6 +32,18 @@ const routes = [
     path: "/team",
     name: "Team",
     component: () => import("../views/Team.vue"),
+  },
+
+  {
+    path: "/teams",
+    name: "Teams",
+    component: () => import("../views/TeamList.vue"),
+  },
+
+  {
+    path: "/teams/profile/1",
+    name: "Team Profile",
+    component: () => import("../views/TeamProfileView.vue"),
   },
 
   // organizer content
@@ -78,6 +91,14 @@ const routes = [
       import(
         /* webpackChunkName: "CreateOrganizer" */ "../views/CreateOrganizer.vue"
       ),
+  },
+
+  // Match related routs
+
+  {
+    path: "/matches/list",
+    name: "Match List",
+    component: () => import("../views/MatchSearchView.vue"),
   },
 ];
 

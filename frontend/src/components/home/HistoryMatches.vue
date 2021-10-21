@@ -27,6 +27,11 @@
           />
         </v-col>
       </v-row>
+      <div align="center" class="text-center mt-5">
+        <v-btn to="/matches/list" large color="primary" rounded
+          >Search More ...</v-btn
+        >
+      </div>
     </v-container>
   </section>
 </template>

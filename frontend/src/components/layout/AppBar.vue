@@ -48,16 +48,32 @@
       </v-list>
     </v-menu>
 
-    <v-btn
-      href="https://github.com/vuetifyjs/vuetify/releases/latest"
-      target="_blank"
-      color="secondary"
-      depressed
-      class="primary--text ml-4 nav-btn-custom"
-    >
-      <v-icon class="nav-btn-text">mdi-account-group</v-icon>
-      <span class="mr-2 ml-2 nav-btn-text">Team Manager</span>
-    </v-btn>
+    <!-- Team related content -->
+    <v-menu close-on-click offset-y>
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn
+          v-bind="attrs"
+          v-on="on"
+          color="secondary"
+          depressed
+          class="primary--text ml-4 nav-btn-custom"
+        >
+          <v-icon class="nav-btn-text">mdi-account-group</v-icon>
+          <span class="mr-2 ml-2 nav-btn-text">Team Manager</span>
+        </v-btn>
+      </template>
+      <v-list>
+        <v-list-item to="/teams/profile/1">
+          <v-list-item-title>Create Team</v-list-item-title>
+        </v-list-item>
+        <v-list-item to="/teams/profile/1">
+          <v-list-item-title>My Teams</v-list-item-title>
+        </v-list-item>
+        <v-list-item to="/teams">
+          <v-list-item-title>View All Teams</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
 
     <!-- Organization menu -->
 
@@ -178,6 +194,6 @@ export default {
 }
 
 .logo-margin {
-  margin-left: 100px;
+  margin-left: 10px;
 }
 </style>

@@ -26,7 +26,7 @@ export default {
   components: { ProfilePicDisplay, SocialMediaInline },
   data() {
     return {
-      name: "ABC Organization",
+      name: "Hexa Team",
       skills: ["Club"],
       socialMediaItems: [
         { id: 1, icon: "mdi-facebook", color: "#4267B2" },
