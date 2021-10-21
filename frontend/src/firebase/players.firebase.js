@@ -26,8 +26,11 @@ export const getPlayerById = async (id) => {
   const docSnap = await getDoc(docRef);
 
   if (docSnap.exists) {
-    let socicalMedia = passSocialMedioa(docSnap.socicalMedia);
-    return { id: docSnap.id, socicalMedia: socicalMedia, ...docSnap.data() };
+    let socialMedia = await passSocialMedioa(docSnap.data().socialMedia);
+    let playerInfo = { id: docSnap.id, ...docSnap.data() };
+    playerInfo["socialMedia"] = socialMedia;
+    return playerInfo;
+    //return { id: docSnap.id, socialMedia: socialMedia, ...docSnap.data() };
   } else {
     return {};
   }

@@ -2,11 +2,7 @@
   <v-card class="mt-15">
     <v-card-text class="text-body-1 summery-text">
       <p class="text-justify">
-        Thilakaratne Mudiyanselage Dilshan, commonly known as Thilakaratne
-        Dilshan is a former Sri Lankan cricketer and former captain of the Sri
-        Lanka national cricket team. As the best rated Sri Lankan player in
-        run-chase ODI history,he is often regarded as one of the most innovative
-        ODI batsmen of all time.
+        {{ introduction }}
       </p>
     </v-card-text>
     <div class="strike">
@@ -16,32 +12,29 @@
       <v-card-text>
         <v-row>
           <v-col cols="6" md="6" sm="12">
-            <single-iine-info title="Email" value="thilakarathne@gmail.com" />
+            <single-iine-info title="Email" :value="email" />
           </v-col>
           <v-col cols="6" md="6" sm="12">
-            <single-iine-info title="Mobile No." value="0715533393" />
+            <single-iine-info title="Mobile No." :value="mobile" />
           </v-col>
         </v-row>
         <v-row>
           <v-col cols="4" md="4" sm="12">
-            <single-iine-info title="date of Birth" value="1974-12-21" />
+            <single-iine-info title="date of Birth" :value="dob" />
           </v-col>
           <v-col cols="8" md="8" sm="12">
-            <single-iine-info
-              title="Address"
-              value="No: 12/3, 2nd Lane, Colombo 6"
-            />
+            <single-iine-info title="Address" :value="address" />
           </v-col>
         </v-row>
         <v-row>
           <v-col cols="4" md="4" sm="12">
-            <single-iine-info title="City" value="Colombo 06" />
+            <single-iine-info title="City" :value="city" />
           </v-col>
           <v-col cols="4" md="4" sm="12">
-            <single-iine-info title="District" value="Colombo" />
+            <single-iine-info title="District" :value="district" />
           </v-col>
           <v-col cols="4" md="4" sm="12">
-            <single-iine-info title="Region" value="Western Province" />
+            <single-iine-info title="Region" :value="region" />
           </v-col>
         </v-row>
       </v-card-text>
@@ -62,7 +55,7 @@
           >
             <achievement-card
               :title="achievement.title"
-              :description="achievement.desciptoin"
+              :description="achievement.description"
               :date="achievement.date"
             />
           </v-col>
@@ -77,47 +70,19 @@ import AchievementCard from "../common/AchievementCard.vue";
 import SingleIineInfo from "../common/SingleIineInfo.vue";
 export default {
   components: { SingleIineInfo, AchievementCard },
+  props: {
+    introduction: String,
+    email: String,
+    mobile: String,
+    dob: String,
+    address: String,
+    city: String,
+    district: String,
+    region: String,
+    achievements: Array,
+  },
   data() {
-    return {
-      achievements: [
-        {
-          title: "All Island Cricekt Championship",
-          desciptoin:
-            "in All island cricket championship I have played as a team capton and had a chance to win the championship",
-          date: "2021-12-12",
-        },
-        {
-          title: "All Island Cricekt Championship",
-          desciptoin:
-            "in All island cricket championship I have played as a team capton and had a chance to win the championship",
-          date: "2021-12-12",
-        },
-        {
-          title: "All Island Cricekt Championship",
-          desciptoin:
-            "in All island cricket championship I have played as a team capton and had a chance to win the championship",
-          date: "2021-12-12",
-        },
-        {
-          title: "All Island Cricekt Championship",
-          desciptoin:
-            "in All island cricket championship I have played as a team capton and had a chance to win the championship",
-          date: "2021-12-12",
-        },
-        {
-          title: "All Island Cricekt Championship",
-          desciptoin:
-            "in All island cricket championship I have played as a team capton and had a chance to win the championship",
-          date: "2021-12-12",
-        },
-        {
-          title: "All Island Cricekt Championship",
-          desciptoin:
-            "in All island cricket championship I have played as a team capton and had a chance to win the championship",
-          date: "2021-12-12",
-        },
-      ],
-    };
+    return {};
   },
 };
 </script>

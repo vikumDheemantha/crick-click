@@ -51,15 +51,6 @@ export default {
     this.matches = await getPastMatches();
   },
 };
-
-// export default {
-//   data() {
-//     return {
-//       matches: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12],
-//     };
-//   },
-//   components: { HistoryMatchCard },
-// };
 </script>
 
 <style>
