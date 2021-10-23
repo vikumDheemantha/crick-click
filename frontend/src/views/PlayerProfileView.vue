@@ -2,18 +2,37 @@
   <v-container class="pt-10">
     <v-row class="pt-10">
       <v-col cols="12" sm="12" md="4">
-        <profile-pic-display name="T.M. Dilshan" :skills="skills" />
+        <profile-pic-display
+          :name="player.displayName"
+          :skills="player.skills"
+        />
         <v-row class="mt-sm-5 mt-md-0">
           <v-col cols="12" xs="12" sm="6" md="12">
-            <social-media-card :items="socialMediaItems" />
+            <social-media-card :items="player.socialMedia" />
           </v-col>
           <v-col cols="12" xs="12" sm="6" md="12">
-            <stat-summery />
+            <stat-summery
+              :matchCount="player.matchCount"
+              :totalScore="player.totalScore"
+              :manOfMatches="player.manOfMatches"
+              :personalBest="player.personalBest"
+              :totalWickets="player.totalWickets"
+            />
           </v-col>
         </v-row>
       </v-col>
       <v-col cols="12" sm="12" md="8">
-        <main-details />
+        <main-details
+          :introduction="player.introduction"
+          :email="player.email"
+          :mobile="player.mobile"
+          :dob="player.dob"
+          :address="player.address"
+          :city="player.city"
+          :district="player.district"
+          :region="player.region"
+          :achievements="player.achievements"
+        />
       </v-col>
     </v-row>
   </v-container>
@@ -24,63 +43,18 @@ import ProfilePicDisplay from "../components/common/ProfilePicDisplay.vue";
 import SocialMediaCard from "../components/common/SocialMediaCard.vue";
 import MainDetails from "../components/playerProfileView/MainDetails.vue";
 import StatSummery from "../components/playerProfileView/StatSummery.vue";
+import { getPlayerById } from "../firebase/players.firebase";
+
 export default {
   components: { ProfilePicDisplay, SocialMediaCard, StatSummery, MainDetails },
 
   data() {
     return {
-      skills: ["Batsman", "Bowler"],
-      socialMediaItems: [
-        {
-          id: 1,
-          type: 1,
-          icon: "mdi-facebook",
-          text: "facebook",
-          url: "https://www.facebook.com/thilakarathne.dilshan.3",
-          color: "#4267B2",
-        },
-        {
-          id: 2,
-          type: 2,
-          icon: "mdi-twitter",
-          text: "Twitter",
-          url: "https://twitter.com/23tmdilshan?lang=en",
-          color: "blue",
-        },
-        {
-          id: 3,
-          type: 3,
-          icon: "mdi-instagram",
-          text: "Instagram",
-          url: "https://www.instagram.com/tmdilshan_23/",
-          color: "#E1306C",
-        },
-        {
-          id: 4,
-          type: 4,
-          icon: "mdi-youtube",
-          text: "YouTube",
-          url: "https://www.youtube.com/watch?v=DYdRBBxY9YM",
-          color: "#FF0000",
-        },
-        {
-          id: 5,
-          type: 5,
-          icon: "mdi-linkedin",
-          text: "LinkedIn",
-          url: "https://www.youtube.com/watch?v=DYdRBBxY9YM",
-          color: "#2867B2",
-        },
-        {
-          id: 6,
-          type: 6,
-          icon: "mdi-web",
-          text: "Web",
-          url: "https://www.espncricinfo.com/player/tillakaratne-dilshan-48472",
-          color: "success",
-        },
-      ],
+      player: null,
     };
+  },
+  async mounted() {
+    this.player = await getPlayerById("1");
   },
 };
 </script>

@@ -35,7 +35,7 @@
 // import { collection, getDocs } from "firebase/firestore";
 import LiveMatchCard from "./LiveMatchCard.vue";
 // import { db } from "../../main";
-import { getAllMatches } from "../../firebase/matchs.firebase";
+import { getOngoingMatches } from "../../firebase/matchs.firebase";
 
 export default {
   data() {
@@ -45,7 +45,7 @@ export default {
   },
   components: { LiveMatchCard },
   async mounted() {
-    this.matches = await getAllMatches();
+    this.matches = await getOngoingMatches();
   },
 };
 </script>

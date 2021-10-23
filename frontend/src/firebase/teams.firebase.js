@@ -69,9 +69,10 @@ export const getTeamBy = async (id) => {
   const docSnap = await getDoc(docRef);
 
   if (docSnap.exists) {
-    let socicalMedia = passSocialMedioa(docSnap.socicalMedia);
-
-    return { id: docSnap.id, socicalMedia: socicalMedia, ...docSnap.data() };
+    let socialMedia = await passSocialMedioa(docSnap.data().socialMedia);
+    let teamInfo = { id: docSnap.id, ...docSnap.data() };
+    teamInfo["socialMedia"] = socialMedia;
+    return teamInfo;
   } else {
     return {};
   }

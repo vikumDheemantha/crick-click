@@ -2,10 +2,11 @@
   <v-card>
     <v-card-title class="px-2 py-2">
       <div class="header-cls">
-        <span class="float-left text-subtitle-1 grey--text font-weight-medium"
-          >Match Name</span
+        <span
+          class="float-left text-subtitle-1 grey--text font-weight-medium"
+          >{{ name }}</span
         >
-        <span class="text-subtitle-1 float-right grey--text"> Oneday </span>
+        <span class="text-subtitle-1 float-right grey--text"> {{ type }} </span>
       </div>
     </v-card-title>
     <!-- <v-card-subtitle
@@ -20,7 +21,7 @@
             class="mx-auto"
             src="https://cdn.vuetifyjs.com/images/parallax/material.jpg"
           ></v-img>
-          <div class="text-subtitle-2 grey--text">Team -1</div>
+          <div class="text-subtitle-2 grey--text">{{ team1.name }}</div>
         </v-col>
         <v-col align-self="center" class="text-center">
           <div class="text-h5 font-weight-light grey--text">vs</div></v-col
@@ -32,28 +33,28 @@
             class="mx-auto"
             src="https://cdn.vuetifyjs.com/images/parallax/material.jpg"
           ></v-img>
-          <div class="text-subtitle-2 grey--text">Team -1</div>
+          <div class="text-subtitle-2 grey--text">{{ team2.name }}</div>
         </v-col>
       </v-row>
       <div class="text-caption text-center grey--text pt-0">
-        T1 WON BY 7 RUNS
+        {{ winner.name }} WON BY {{ wonBy }}
       </div>
       <v-row>
         <v-col cols="5" class="text-center">
           <div class="text-h5 grey--text font-weight-medium mark-txt">
-            248-5
+            {{ team1.score }}-{{ team1.wickets }}
           </div>
           <div class="text-subtitle-2 grey--text font-weight-medium">
-            50.0(50)
+            {{ team1.balls / 6 }}.{{ team1.balls % 6 }}({{ numberOfOvers }})
           </div>
         </v-col>
         <v-spacer />
         <v-col cols="5" class="text-center">
           <div class="text-h5 grey--text font-weight-medium mark-txt">
-            241-10
+            {{ team2.score }}-{{ team2.wickets }}
           </div>
           <div class="text-subtitle-2 grey--text font-weight-medium">
-            45.5(50)
+            {{ ~~(team2.balls / 6) }}.{{ team2.balls % 6 }}({{ numberOfOvers }})
           </div>
         </v-col>
       </v-row>
@@ -63,6 +64,17 @@
 
 <script>
 export default {
+  props: {
+    name: String,
+    type: String,
+    startedAt: String,
+    location: String,
+    team1: Object,
+    team2: Object,
+    winner: Object,
+    wonBy: String,
+    numberOfOvers: Number,
+  },
   data() {
     return {
       imageWidth: "60%",
