@@ -1,19 +1,42 @@
 <template>
   <v-card class="mt-15">
-    <v-card-text class="text-body-1 summery-text">
-      <p class="text-justify">
-        Do do esse qui ullamco cillum quis voluptate velit tempor pariatur.
-        Tempor veniam aute adipisicing laborum aliqua sint est incididunt magna
-        culpa. Nostrud nulla ex reprehenderit ut sunt. Aute quis ad officia sunt
-        laboris in tempor ipsum duis tempor mollit. Occaecat sint ad esse non eu
-        Lorem consectetur fugiat laborum commodo sit enim.
+    <v-btn
+      color="primary"
+      class="float-end mt-3 mr-3"
+      fab
+      small
+      dark
+      @click="enableEdit"
+      v-if="!editing"
+    >
+      <v-icon>mdi-pencil</v-icon>
+    </v-btn>
+    <v-card-text class="text-body-1 summery-text clear-both pt-0">
+      <p class="text-justify" v-if="!editing">
+        {{ description }}
       </p>
+      <v-textarea
+        outlined
+        name="description"
+        label="Team Description"
+        v-model="editDescription"
+        v-else
+      ></v-textarea>
     </v-card-text>
 
-    <contact-card class="mx-2" />
-    <div class="strike">
+    <contact-card class="mx-2" :editing="editing" />
+    <div class="float-end mr-3 mt-1" v-if="editing">
+      <v-btn class="ml-2" color="success" small @click="handleSave">Save</v-btn>
+      <v-btn class="ml-2" small @click="handleCancel">Cancel</v-btn>
+    </div>
+    <div class="strike clear-both">
       <span class="text-h6 primary--text font-weight-medium"> Players </span>
       <v-card-text>
+        <v-btn color="primary" class="float-end mt-3 mr-3" dark>
+          <v-icon>mdi-plus</v-icon>
+          Player
+        </v-btn>
+        <div class="clear-both"></div>
         <team-players-list :players="players" />
       </v-card-text>
       <div class="strike">
@@ -35,6 +58,7 @@
               :title="achievement.title"
               :description="achievement.desciptoin"
               :date="achievement.date"
+              :editable="editable"
             />
           </v-col>
         </v-row>
@@ -50,8 +74,19 @@ import ContactCard from "../teamProfileView/ContactCard.vue";
 import TeamPlayersList from "./TeamPlayersList.vue";
 export default {
   components: { AchievementCard, TeamPlayersList, ContactCard },
+  props: {
+    editable: {
+      type: Boolean,
+      default: false,
+    },
+  },
   data() {
     return {
+      editing: false,
+      description:
+        "Do do esse qui ullamco cillum quis voluptate velit tempor pariatur. Tempor veniam aute adipisicing laborum aliqua sint est incididunt magna culpa. Nostrud nulla ex reprehenderit ut sunt. Aute quis ad officia sunt laboris in tempor ipsum duis tempor mollit. Occaecat sint ad esse non eu Lorem consectetur fugiat laborum commodo sit enim.",
+      editDescription:
+        "Do do esse qui ullamco cillum quis voluptate velit tempor pariatur. Tempor veniam aute adipisicing laborum aliqua sint est incididunt magna culpa. Nostrud nulla ex reprehenderit ut sunt. Aute quis ad officia sunt laboris in tempor ipsum duis tempor mollit. Occaecat sint ad esse non eu Lorem consectetur fugiat laborum commodo sit enim.",
       players: [
         {
           img: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
@@ -163,6 +198,18 @@ export default {
       ],
     };
   },
+  methods: {
+    enableEdit() {
+      this.editing = true;
+    },
+    async handleSave() {
+      // TODO: Save edited content to firebase
+      this.editing = false;
+    },
+    handleCancel() {
+      this.editing = false;
+    },
+  },
 };
 </script>
 
@@ -204,5 +251,9 @@ export default {
 .strike > span:after {
   left: 100%;
   margin-left: 15px;
+}
+
+.clear-both {
+  clear: both;
 }
 </style>

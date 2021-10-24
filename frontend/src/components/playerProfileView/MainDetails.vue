@@ -80,6 +80,10 @@ export default {
     district: String,
     region: String,
     achievements: Array,
+    editable: {
+      type: Boolean,
+      default: false,
+    }
   },
   data() {
     return {};

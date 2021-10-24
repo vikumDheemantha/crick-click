@@ -5,6 +5,14 @@
     <v-card-text>
       {{ description }}
     </v-card-text>
+    <v-card-actions class="float-end">
+      <v-btn class="" icon small color="seconday">
+        <v-icon dark> mdi-pencil </v-icon>
+      </v-btn>
+      <v-btn class="" icon small color="primary">
+        <v-icon dark> mdi-delete </v-icon>
+      </v-btn>
+    </v-card-actions>
   </v-card>
 </template>
 
@@ -14,6 +22,10 @@ export default {
     title: { type: String, required: true },
     description: { type: String, required: false },
     date: { required: false },
+    editable: {
+      type: Boolean,
+      default: false,
+    },
   },
 };
 </script>
