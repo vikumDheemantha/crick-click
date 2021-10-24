@@ -47,7 +47,6 @@ import StatSummery from "../components/playerProfileView/StatSummery.vue";
 import { getPlayerById } from "../firebase/players.firebase";
 
 export default {
-  //components: { ProfilePicDisplay, SocialMediaCard, StatSummery, MainDetails },
   components: { ProfilePicDisplay, SocialMediaCard, StatSummery, MainDetails },
 
   data() {

@@ -11,6 +11,9 @@
 
 <script>
 export default {
+  props: {
+    players: Array,
+  },
   data() {
     return {
       headers: [
@@ -18,95 +21,13 @@ export default {
           text: "Name",
           align: "start",
           sortable: false,
-          value: "name",
+          value: "displayName",
         },
         { text: "Skills", value: "skills" },
         { text: "City", value: "city" },
         { text: "Region", value: "region" },
-        { text: "Total matches", value: "matchesPlayed" },
+        { text: "Total matches", value: "matchCount" },
         { text: "Personal Best", value: "personalBest" },
-      ],
-      players: [
-        {
-          name: "Frozen Yogurt",
-          skills: ["Batting, Bowling"],
-          city: "Kandy",
-          region: "Kandy",
-          matchesPlayed: 15,
-          personalBest: 150,
-        },
-        {
-          name: "Ice cream sandwich",
-          skills: ["Batting, Bowling"],
-          city: "Kandy",
-          region: "Kandy",
-          matchesPlayed: 15,
-          personalBest: 150,
-        },
-        {
-          name: "Eclair",
-          skills: ["Batting, Bowling"],
-          city: "Kandy",
-          region: "Kandy",
-          matchesPlayed: 15,
-          personalBest: 150,
-        },
-        {
-          name: "Cupcake",
-          skills: ["Batting, Bowling"],
-          city: "Kandy",
-          region: "Kandy",
-          matchesPlayed: 15,
-          personalBest: 150,
-        },
-        {
-          name: "Gingerbread",
-          skills: ["Batting, Bowling"],
-          city: "Kandy",
-          region: "Kandy",
-          matchesPlayed: 15,
-          personalBest: 150,
-        },
-        {
-          name: "Jelly bean",
-          skills: ["Batting, Bowling"],
-          city: "Kandy",
-          region: "Kandy",
-          matchesPlayed: 15,
-          personalBest: 150,
-        },
-        {
-          name: "Lollipop",
-          skills: ["Batting, Bowling"],
-          city: "Kandy",
-          region: "Kandy",
-          matchesPlayed: 15,
-          personalBest: 150,
-        },
-        {
-          name: "Honeycomb",
-          skills: ["Batting, Bowling"],
-          city: "Kandy",
-          region: "Kandy",
-          matchesPlayed: 15,
-          personalBest: 150,
-        },
-        {
-          name: "Donut",
-          skills: ["Batting, Bowling"],
-          city: "Kandy",
-          region: "Kandy",
-          matchesPlayed: 15,
-          personalBest: 150,
-        },
-        {
-          name: "KitKat",
-          skills: ["Batting, Bowling"],
-          city: "Kandy",
-          region: "Kandy",
-          matchesPlayed: 15,
-          personalBest: 150,
-        },
       ],
     };
   },
