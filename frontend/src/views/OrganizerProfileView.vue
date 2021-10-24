@@ -6,8 +6,8 @@
         <social-media-card :items="socialMediaItems" />
       </v-col>
       <v-col cols="8">
-        <details-card />
-        <contact-card />
+        <details-card :editable="editable" />
+        <contact-card :editable="editable" />
       </v-col>
     </v-row>
   </v-container>
@@ -24,6 +24,7 @@ export default {
 
   data() {
     return {
+      editable: true,
       name: "ABC Organization",
       socialMediaItems: [
         {
