@@ -6,7 +6,9 @@ import store from "./store";
 import vuetify from "./plugins/vuetify";
 import "./styles/scss/main.scss";
 import "./registerServiceWorker";
+import moment from "moment";
 
+Vue.prototype.$moment = moment;
 Vue.config.productionTip = false;
 
 new Vue({

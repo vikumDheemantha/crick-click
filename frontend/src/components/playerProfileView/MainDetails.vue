@@ -20,7 +20,10 @@
         </v-row>
         <v-row>
           <v-col cols="4" md="4" sm="12">
-            <single-iine-info title="date of Birth" :value="dob" />
+            <single-iine-info
+              title="date of Birth"
+              :value="$moment(dob.toDate()).format('YYYY-MM-DD')"
+            />
           </v-col>
           <v-col cols="8" md="8" sm="12">
             <single-iine-info title="Address" :value="address" />
@@ -83,7 +86,7 @@ export default {
     editable: {
       type: Boolean,
       default: false,
-    }
+    },
   },
   data() {
     return {};
