@@ -13,7 +13,7 @@
         </v-row>
       </v-col>
       <v-col cols="12" sm="12" md="8">
-        <main-details />
+        <main-details :editable="editable" />
       </v-col>
     </v-row>
   </v-container>
@@ -30,7 +30,7 @@ export default {
   data() {
     return {
       name: "Team Hexa",
-
+      editable: true,
       socialMediaItems: [
         {
           id: 1,

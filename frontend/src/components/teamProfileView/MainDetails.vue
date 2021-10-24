@@ -7,11 +7,11 @@
       small
       dark
       @click="enableEdit"
-      v-if="!editing"
+      v-if="editable && !editing"
     >
       <v-icon>mdi-pencil</v-icon>
     </v-btn>
-    <v-card-text class="text-body-1 summery-text clear-both pt-0">
+    <v-card-text class="text-body-1 summery-text clear-both pt-2 mt-2">
       <p class="text-justify" v-if="!editing">
         {{ description }}
       </p>
@@ -20,6 +20,8 @@
         name="description"
         label="Team Description"
         v-model="editDescription"
+        class="mt-5"
+        hide-details="auto"
         v-else
       ></v-textarea>
     </v-card-text>
@@ -32,12 +34,12 @@
     <div class="strike clear-both">
       <span class="text-h6 primary--text font-weight-medium"> Players </span>
       <v-card-text>
-        <v-btn color="primary" class="float-end mt-3 mr-3" dark>
+        <v-btn color="primary" v-if="editable" class="float-end mt-3 mr-3" dark>
           <v-icon>mdi-plus</v-icon>
           Player
         </v-btn>
         <div class="clear-both"></div>
-        <team-players-list :players="players" />
+        <team-players-list :players="players" :editable="editable" />
       </v-card-text>
       <div class="strike">
         <span class="text-h6 primary--text font-weight-medium">
@@ -45,7 +47,11 @@
         </span>
       </div>
       <v-card-text>
-        <v-row>
+        <v-btn color="primary" v-if="editable" class="float-end" dark>
+          <v-icon>mdi-plus</v-icon>
+          Achievement
+        </v-btn>
+        <v-row class="clear-both">
           <v-col
             cols="12"
             md="6"

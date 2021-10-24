@@ -25,7 +25,7 @@
               <v-btn class="mx-2" to="/player/my-profile" icon color="#ACACAC">
                 <v-icon dark> mdi-open-in-new </v-icon>
               </v-btn>
-              <v-btn class="mx-2" icon color="primary">
+              <v-btn class="mx-2" v-if="editable" icon color="primary">
                 <v-icon dark> mdi-delete </v-icon>
               </v-btn>
             </div>
@@ -42,6 +42,10 @@ export default {
   props: {
     players: Array,
     caption: [String, Object],
+    editable: {
+      type: Boolean,
+      default: false,
+    },
   },
 };
 </script>

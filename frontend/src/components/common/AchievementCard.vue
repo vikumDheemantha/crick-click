@@ -5,7 +5,7 @@
     <v-card-text>
       {{ description }}
     </v-card-text>
-    <v-card-actions class="float-end">
+    <v-card-actions v-if="editable" class="float-end">
       <v-btn class="" icon small color="seconday">
         <v-icon dark> mdi-pencil </v-icon>
       </v-btn>
