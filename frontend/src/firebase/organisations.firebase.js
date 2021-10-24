@@ -12,7 +12,7 @@ import {
 } from "firebase/firestore";
 
 import { db } from "./main";
-//import { passSocialMedioa } from "./socialmedia.firebase.js";
+import { passSocialMedioa } from "./socialmedia.firebase.js";
 
 /**
  * adding new organisation
@@ -42,5 +42,24 @@ export const updateOrganisation = async (organisation) => {
   } catch (error) {
     console.error("Error updating data to the firebase: ", error);
     return false;
+  }
+};
+
+/**
+ * Get organisatoin by Id
+ * @param {*} id organisation Id
+ * @returns organisationInfo
+ */
+export const getOrganisationById = async (id) => {
+  const docRef = doc(db, "organisations", id);
+  const docSnap = await getDoc(docRef);
+
+  if (docSnap.exists) {
+    let socialMedia = await passSocialMedioa(docSnap.data().socialMedia);
+    let organisationInfo = { id: docSnap.id, ...docSnap.data() };
+    organisationInfo["socialMedia"] = socialMedia;
+    return organisationInfo;
+  } else {
+    return {};
   }
 };

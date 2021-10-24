@@ -6,7 +6,7 @@
           <single-iine-info title="Email" :value="email" />
         </v-col>
         <v-col cols="6" sm="12" md="3">
-          <single-iine-info title="Mobile No." :value="mobile" />
+          <single-iine-info title="Phone No." :value="phone" />
         </v-col>
         <v-col cols="6" sm="12" md="5">
           <single-iine-info title="Address" :value="address" />
@@ -21,11 +21,16 @@ import SingleIineInfo from "../common/SingleIineInfo.vue";
 
 export default {
   components: { SingleIineInfo },
+  props: {
+    email: String,
+    phone: String,
+    address: String,
+  },
   data() {
     return {
-      email: "info@abc.xyz",
-      mobile: "+94b720042233",
-      address: "No: 12/3, 2nd Lane, Colombo 6",
+      // email: "info@abc.xyz",
+      // mobile: "+94b720042233",
+      // address: "No: 12/3, 2nd Lane, Colombo 6",
     };
   },
 };
