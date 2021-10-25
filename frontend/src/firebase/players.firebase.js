@@ -1,7 +1,7 @@
 import { collection, getDocs, doc, getDoc } from "firebase/firestore";
 import { db } from "./main";
 import { passSocialMedioa } from "./socialmedia.firebase.js";
-import { getTeamBy } from "./teams.firebase.js";
+import { getTeamById } from "./teams.firebase.js";
 
 export const getAllPlayers = async () => {
   let players = [];
@@ -41,6 +41,6 @@ export const getPlayerById = async (id) => {
 };
 
 export const getPlayerlayersByTeam = async (teamId) => {
-  const team = getTeamBy(teamId);
+  const team = getTeamById(teamId);
   return team["players"] ?? {};
 };

@@ -12,7 +12,10 @@
 <script>
 export default {
   props: {
-    players: Array,
+    players: {
+      type: Array,
+      //default: [],
+    },
   },
   data() {
     return {

@@ -59,12 +59,15 @@ export default {
       type: Boolean,
       default: false,
     },
+    email: String,
+    mobile: String,
+    address: String,
   },
   data() {
     return {
-      email: "info@abc.xyz",
-      mobile: "+94b720042233",
-      address: "No: 12/3, 2nd Lane, Colombo 6",
+      // email: "info@abc.xyz",
+      // mobile: "+94b720042233",
+      // address: "No: 12/3, 2nd Lane, Colombo 6",
     };
   },
 };

@@ -19,14 +19,20 @@
         outlined
         name="description"
         label="Team Description"
-        v-model="editDescription"
+        v-model="description"
         class="mt-5"
         hide-details="auto"
         v-else
       ></v-textarea>
     </v-card-text>
 
-    <contact-card class="mx-2" :editing="editing" />
+    <contact-card
+      class="mx-2"
+      :editing="editing"
+      :email="email"
+      :mobile="mobile"
+      :address="address"
+    />
     <div class="float-end mr-3 mt-1" v-if="editing">
       <v-btn class="ml-2" color="success" small @click="handleSave">Save</v-btn>
       <v-btn class="ml-2" small @click="handleCancel">Cancel</v-btn>
@@ -62,7 +68,7 @@
           >
             <achievement-card
               :title="achievement.title"
-              :description="achievement.desciptoin"
+              :description="achievement.desciption"
               :date="achievement.date"
               :editable="editable"
             />
@@ -85,14 +91,14 @@ export default {
       type: Boolean,
       default: false,
     },
+    description: String,
+    email: String,
+    mobile: String,
+    address: String,
   },
   data() {
     return {
       editing: false,
-      description:
-        "Do do esse qui ullamco cillum quis voluptate velit tempor pariatur. Tempor veniam aute adipisicing laborum aliqua sint est incididunt magna culpa. Nostrud nulla ex reprehenderit ut sunt. Aute quis ad officia sunt laboris in tempor ipsum duis tempor mollit. Occaecat sint ad esse non eu Lorem consectetur fugiat laborum commodo sit enim.",
-      editDescription:
-        "Do do esse qui ullamco cillum quis voluptate velit tempor pariatur. Tempor veniam aute adipisicing laborum aliqua sint est incididunt magna culpa. Nostrud nulla ex reprehenderit ut sunt. Aute quis ad officia sunt laboris in tempor ipsum duis tempor mollit. Occaecat sint ad esse non eu Lorem consectetur fugiat laborum commodo sit enim.",
       players: [
         {
           img: "https://cdn.vuetifyjs.com/images/lists/1.jpg",
