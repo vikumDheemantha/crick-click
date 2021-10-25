@@ -88,8 +88,14 @@
 
 <script>
 import AchievementCard from "../common/AchievementCard.vue";
+import { addAcievementList } from "../../firebase/players.firebase";
+import { Timestamp } from "firebase/firestore";
+
 export default {
   components: { AchievementCard },
+  props: {
+    id: String,
+  },
   data() {
     return {
       achievements: [],
@@ -114,8 +120,13 @@ export default {
       this.description = "";
       this.date = "";
     },
-    handleNext() {
-      this.$emit("next", {});
+    async handleNext() {
+      let achievemetsToDb = this.achievements.map((item) => ({
+        ...item,
+        date: Timestamp.fromDate(new Date(item.date)),
+      }));
+      let res = await addAcievementList(this.id, achievemetsToDb);
+      this.$emit("next", res);
     },
   },
 };

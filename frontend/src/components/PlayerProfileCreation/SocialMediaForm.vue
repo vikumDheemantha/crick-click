@@ -53,18 +53,20 @@
 
 <script>
 import SocialMediaCard from "../common/SocialMediaCard.vue";
+import { addSocialMedia } from "../../firebase/players.firebase";
+import { mapGetters } from "vuex";
+
 export default {
   components: { SocialMediaCard },
+  props: {
+    id: String,
+  },
   data() {
     return {
       socialMedias: [],
       typeId: null,
       url: "",
       socialMediaSelect: null,
-      socialMediaTypes: [
-        { id: 1, name: "FaceBook", color: "red", icon: "mdi-facebook" },
-        { id: 2, name: "Twitter", color: "blue", icon: "mdi-twitter" },
-      ],
     };
   },
   methods: {
@@ -87,9 +89,18 @@ export default {
     handleDelete(id) {
       this.socialMedias = this.socialMedias.filter((item) => item.id !== id);
     },
-    handleNext() {
-      this.$emit("next", {});
+    async handleNext() {
+      let socialMediaList = this.socialMedias.map((item) => ({
+        typeId: item.type,
+        url: item.url,
+      }));
+
+      let res = await addSocialMedia(this.id, socialMediaList);
+      this.$emit("next", res);
     },
+  },
+  computed: {
+    ...mapGetters({ socialMediaTypes: "getSocialMediaList" }),
   },
 };
 </script>

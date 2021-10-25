@@ -7,7 +7,7 @@
 
       <v-stepper-content step="1">
         <!-- Basic Information -->
-        <basic-information-form @next="step = 2" />
+        <basic-information-form @next="handleNext1" />
       </v-stepper-content>
 
       <v-stepper-step :complete="step > 2" step="2">
@@ -16,7 +16,7 @@
       </v-stepper-step>
 
       <v-stepper-content step="2">
-        <achievement-details-form @next="step = 3" />
+        <achievement-details-form :id="playerId" @next="handleNext2" />
       </v-stepper-content>
 
       <v-stepper-step :complete="step > 3" step="3">
@@ -25,16 +25,18 @@
       </v-stepper-step>
 
       <v-stepper-content step="3">
-        <social-media-form />
+        <social-media-form :id="playerId" @next="handleNext3" />
       </v-stepper-content>
     </v-stepper>
   </v-container>
 </template>
 
 <script>
-import AchievementDetailsForm from '../components/PlayerProfileCreation/AchievementDetailsForm.vue';
+import AchievementDetailsForm from "../components/PlayerProfileCreation/AchievementDetailsForm.vue";
 import BasicInformationForm from "../components/PlayerProfileCreation/BasicInformationForm.vue";
-import SocialMediaForm from '../components/PlayerProfileCreation/SocialMediaForm.vue';
+import SocialMediaForm from "../components/PlayerProfileCreation/SocialMediaForm.vue";
+import { mapActions } from "vuex";
+
 export default {
   components: { BasicInformationForm, AchievementDetailsForm, SocialMediaForm },
   data: () => ({
@@ -42,15 +44,37 @@ export default {
     activePicker: null,
     date: null,
     menu: false,
+    playerId: null,
   }),
   watch: {
     menu(val) {
       val && setTimeout(() => (this.activePicker = "YEAR"));
     },
   },
+  mounted() {
+    this.fetchSocialMediaList();
+  },
   methods: {
+    ...mapActions(["fetchSocialMediaList"]),
     save(date) {
       this.$refs.menu.save(date);
+    },
+    handleNext1(res) {
+      if (res.success) {
+        this.playerId = res.id;
+        this.step = 2;
+      }
+    },
+    handleNext2(res) {
+      if (res.success) {
+        this.step = 3;
+      }
+    },
+
+    handleNext3(res) {
+      if (res.success) {
+        this.$router.push("/player/my-profile");
+      }
     },
   },
 };
