@@ -2,7 +2,9 @@
   <v-card class="achievemnt-crd">
     <v-card-title class="text-center primary--text"> {{ title }}</v-card-title>
     <v-card-subtitle>
-      {{ $moment(date.toDate()).format("YYYY-MM-DD") }}</v-card-subtitle
+      {{
+        date.toDate ? $moment(date.toDate()).format("YYYY-MM-DD") : date
+      }}</v-card-subtitle
     >
     <v-card-text>
       {{ description }}

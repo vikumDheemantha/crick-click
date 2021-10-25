@@ -11,7 +11,7 @@
 
 <script>
 import FilterCard from "../components/matchSearchView/FilterCard.vue";
-import MatchResult from '../components/matchSearchView/MatchResult.vue';
+import MatchResult from "../components/matchSearchView/MatchResult.vue";
 
 export default {
   components: { FilterCard, MatchResult },

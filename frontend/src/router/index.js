@@ -65,8 +65,8 @@ const routes = [
   // player content
   {
     path: "/player/create",
-    name: "p-profile",
-    component: () => import("../views/p-profile.vue"),
+    name: "Player Profile Cretion",
+    component: () => import("../views/PlayerProfileCreation.vue"),
   },
   {
     path: "/player/my-profile",
