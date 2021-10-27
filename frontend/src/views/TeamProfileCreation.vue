@@ -94,7 +94,7 @@ export default {
 
     handleNext4(res) {
       if (res.success) {
-        this.$router.push("/player/my-profile");
+        this.$router.push("/teams/profile/1");
       }
     },
   },

@@ -57,7 +57,7 @@ export default {
     },
     handleNext2(res) {
       if (res.success) {
-        this.$router.push("/player/my-profile");
+        this.$router.push("/organization/my-organization");
       }
     },
   },
