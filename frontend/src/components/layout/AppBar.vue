@@ -63,7 +63,7 @@
         </v-btn>
       </template>
       <v-list>
-        <v-list-item to="/teams/profile/1">
+        <v-list-item to="/team/create">
           <v-list-item-title>Create Team</v-list-item-title>
         </v-list-item>
         <v-list-item to="/teams/profile/1">

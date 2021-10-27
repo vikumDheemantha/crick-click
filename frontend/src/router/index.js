@@ -35,6 +35,12 @@ const routes = [
   },
 
   {
+    path: "/team/create",
+    name: "Team Creation",
+    component: () => import("../views/TeamProfileCreation.vue"),
+  },
+
+  {
     path: "/teams",
     name: "Teams",
     component: () => import("../views/TeamList.vue"),

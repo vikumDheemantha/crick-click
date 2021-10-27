@@ -9,6 +9,7 @@ import {
   updateDoc,
   arrayUnion,
   arrayRemove,
+  setDoc,
 } from "firebase/firestore";
 
 import { db } from "./main";
@@ -168,5 +169,66 @@ export const removePlayerFromTheTeam = async (playerId, teamId) => {
   } catch (error) {
     console.error("Error updating from the firebase: ", error);
     return false;
+  }
+};
+
+export const createTeamWithBasicInfo = async (basicInfo) => {
+  let id = "team_" + new Date().getTime();
+  try {
+    let newTeamRef = doc(db, "teams", id);
+    await setDoc(newTeamRef, basicInfo);
+    return { success: true, id: id };
+  } catch (error) {
+    console.error("Error creating Team step 1: ", error);
+    return {
+      success: false,
+      message: "Could not update data base, Please try again",
+    };
+  }
+};
+
+export const addTeamPlayers = async (id, players) => {
+  try {
+    console.log("Array of Players: ", players);
+    console.log("player creation ID returned from the previous: ", id);
+    let newTeamRef = doc(db, "teams", id);
+    console.log("reference created successfully");
+    await setDoc(newTeamRef, { players: players }, { merge: true });
+    console.log("Document Retrieved successfully");
+    return { success: true, id: id };
+  } catch (error) {
+    console.error("Error creating team step 2: ", error);
+    return {
+      success: false,
+      message: "Could not update team players, Please try again",
+    };
+  }
+};
+
+export const addAcievementList = async (id, achievements) => {
+  try {
+    let newPlayerRef = doc(db, "teams", id);
+    await setDoc(newPlayerRef, { achievements: achievements }, { merge: true });
+    return { success: true, id: id };
+  } catch (error) {
+    console.error("Error creating player step 2: ", error);
+    return {
+      success: false,
+      message: "Could not update achievements, Please try again",
+    };
+  }
+};
+
+export const addSocialMedia = async (id, socialMedia) => {
+  try {
+    let newPlayerRef = doc(db, "teams", id);
+    await setDoc(newPlayerRef, { socialMedia: socialMedia }, { merge: true });
+    return { success: true, id: id };
+  } catch (error) {
+    console.error("Error creating player step 3: ", error);
+    return {
+      success: false,
+      message: "Could not update achievements, Please try again",
+    };
   }
 };
