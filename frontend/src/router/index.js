@@ -59,6 +59,11 @@ const routes = [
     component: () => import("../views/MatchOrganizer.vue"),
   },
   {
+    path: "/organization/create",
+    name: "Create Organization",
+    component: () => import("../views/OrganizationProfileCreation.vue"),
+  },
+  {
     path: "/organization/my-organization",
     name: "Match Organizer",
     component: () => import("../views/OrganizerProfileView.vue"),

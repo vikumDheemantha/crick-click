@@ -9,6 +9,7 @@ import {
   updateDoc,
   arrayUnion,
   arrayRemove,
+  setDoc,
 } from "firebase/firestore";
 
 import { db } from "./main";
@@ -42,5 +43,34 @@ export const updateOrganisation = async (organisation) => {
   } catch (error) {
     console.error("Error updating data to the firebase: ", error);
     return false;
+  }
+};
+
+export const createOrganizationWithBasicInfo = async (basicInfo) => {
+  let id = "org_" + new Date().getTime();
+  try {
+    let newPlayerRef = doc(db, "organisations", id);
+    await setDoc(newPlayerRef, basicInfo);
+    return { success: true, id: id };
+  } catch (error) {
+    console.error("Error creating organization step 1: ", error);
+    return {
+      success: false,
+      message: "Could not update data base, Please try again",
+    };
+  }
+};
+
+export const addSocialMedia = async (id, socialMedia) => {
+  try {
+    let newPlayerRef = doc(db, "organisations", id);
+    await setDoc(newPlayerRef, { socialMedia: socialMedia }, { merge: true });
+    return { success: true, id: id };
+  } catch (error) {
+    console.error("Error creating organization step 3: ", error);
+    return {
+      success: false,
+      message: "Could not update achievements, Please try again",
+    };
   }
 };

@@ -91,7 +91,7 @@
         </v-btn>
       </template>
       <v-list>
-        <v-list-item to="/player/create">
+        <v-list-item to="/organization/create">
           <v-list-item-title>Create Organization</v-list-item-title>
         </v-list-item>
         <v-list-item to="/organization/my-organization">
