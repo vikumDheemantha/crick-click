@@ -10,7 +10,7 @@ export const passSocialMedioa = async (socilMedias) => {
     let socialMediaTypes = [];
     querySocialMediasSnapshot.forEach(async (item) => {
       socialMediaTypes.push({
-        type_id: item.id,
+        typeId: item.id,
         info: item.data(),
       });
     });
@@ -18,13 +18,13 @@ export const passSocialMedioa = async (socilMedias) => {
     let socialMediaList = [];
     socilMedias.forEach(async (socialMedia) => {
       let res = socialMediaTypes.find(
-        (element) => element.type_id == socialMedia.type_id
+        (element) => element.typeId == socialMedia.typeId
       );
 
       if (res != null) {
         socialMediaList.push({
-          id: socialMedia.type_id,
-          type: socialMedia.type_id,
+          id: socialMedia.typeId,
+          type: socialMedia.typeId,
           icon: res.info.icon,
           text: res.info.name,
           url: socialMedia.url,

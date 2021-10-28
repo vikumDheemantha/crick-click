@@ -14,6 +14,7 @@ import {
 
 import { db } from "./main";
 import { passSocialMedioa } from "./socialmedia.firebase.js";
+import { getPlayerById } from "./players.firebase";
 
 /**
  * Create new team
@@ -65,15 +66,27 @@ export const getAllTeams = async () => {
  * @param {*} id
  * @returns team
  */
-export const getTeamBy = async (id) => {
+export const getTeamById = async (id) => {
   const docRef = doc(db, "teams", id);
   const docSnap = await getDoc(docRef);
-
+  
   if (docSnap.exists) {
-    let socialMedia = await passSocialMedioa(docSnap.data().socialMedia);
+    //let socialMedia = await passSocialMedioa(docSnap.data().socialMedia);
+    
+    let promises = [];
+    promises.push(passSocialMedioa(docSnap.data().socialMedia));
+    //promises.push(getDoc(docSnap.data().captain.reference));
     let teamInfo = { id: docSnap.id, ...docSnap.data() };
+
+    // teamInfo.data().players.forEach((player) => {
+
+    // });
+    let data = await Promise.all(promises);
+    let socialMedia = data[0];
+    //console.log("captain", data[1]);
     teamInfo["socialMedia"] = socialMedia;
-    return teamInfo;
+    
+    return teamInfo;  
   } else {
     return {};
   }

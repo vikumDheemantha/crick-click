@@ -9,7 +9,7 @@ import {
 } from "firebase/firestore";
 import { db } from "./main";
 import { passSocialMedioa } from "./socialmedia.firebase.js";
-import { getTeamBy } from "./teams.firebase.js";
+import { getTeamById } from "./teams.firebase.js";
 
 export const getAllPlayers = async () => {
   let players = [];
@@ -18,9 +18,14 @@ export const getAllPlayers = async () => {
     queryPlayersSnapshot.forEach(async (doc) => {
       players.push({
         id: doc.id,
-        displayName: doc.displayName,
-        image: doc.image_url,
-        introduction: doc.introduction,
+        displayName: doc.data().displayName,
+        image: doc.data().image_url,
+        introduction: doc.data().introduction,
+        skills: doc.data().skills,
+        city: doc.data().city,
+        region: doc.data().region,
+        matchCount: doc.data().matchCount,
+        personalBest: doc.data().personalBest,
       });
     });
   } catch (error) {
@@ -38,14 +43,13 @@ export const getPlayerById = async (id) => {
     let playerInfo = { id: docSnap.id, ...docSnap.data() };
     playerInfo["socialMedia"] = socialMedia;
     return playerInfo;
-    //return { id: docSnap.id, socialMedia: socialMedia, ...docSnap.data() };
   } else {
     return {};
   }
 };
 
 export const getPlayerlayersByTeam = async (teamId) => {
-  const team = getTeamBy(teamId);
+  const team = getTeamById(teamId);
   return team["players"] ?? {};
 };
 

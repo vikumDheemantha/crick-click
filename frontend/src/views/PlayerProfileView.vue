@@ -5,6 +5,7 @@
         <profile-pic-display
           :name="player.displayName"
           :skills="player.skills"
+          :url="player.image_url"
         />
         <v-row class="mt-sm-5 mt-md-0">
           <v-col cols="12" xs="12" sm="6" md="12">
