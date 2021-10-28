@@ -65,7 +65,7 @@ export default {
     description(val) {
       this.descriptionTxt = val;
     },
-  }
+  },
 };
 </script>
 

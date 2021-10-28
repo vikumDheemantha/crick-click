@@ -34,7 +34,7 @@
             outlined
             dense
             label="Email"
-            v-model="email"
+            v-model="emailTxt"
           />
         </v-col>
         <v-col cols="6" sm="12" md="3">
@@ -43,7 +43,7 @@
             outlined
             dense
             label="Mobile No."
-            v-model="mobile"
+            v-model="mobileTxt"
           />
         </v-col>
         <v-col cols="6" sm="12" md="5">
@@ -52,7 +52,7 @@
             outlined
             dense
             label="Address"
-            v-model="address"
+            v-model="addressTxt"
           />
         </v-col>
       </v-row>
@@ -81,9 +81,9 @@ export default {
   },
   data() {
     return {
-      // email: "info@abc.xyz",
-      // mobile: "+94b720042233",
-      // address: "No: 12/3, 2nd Lane, Colombo 6",
+      emailTxt: "info@abc.xyz",
+      mobileTxt: "+94b720042233",
+      addressTxt: "No: 12/3, 2nd Lane, Colombo 6",
     };
   },
   methods: {
@@ -96,6 +96,17 @@ export default {
     },
     handleCancel() {
       this.editing = false;
+    },
+  },
+  watch: {
+    email(val) {
+      this.emailTxt = val;
+    },
+    phone(val) {
+      this.mobileTxt = val;
+    },
+    address(val) {
+      this.addressTxt = val;
     },
   },
 };
