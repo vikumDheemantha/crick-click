@@ -38,3 +38,23 @@ export const passSocialMedioa = async (socilMedias) => {
     console.error("Error fetching data from the firebase: ", error);
   }
 };
+
+export const getAllSocialMedias = async () => {
+  try {
+    const socialMediaListSnapshot = await getDocs(
+      collection(db, "socialMedia")
+    );
+
+    let socialMediaList = socialMediaListSnapshot.docs.map((smDoc) => ({
+      id: smDoc.id,
+      color: smDoc.data().color,
+      icon: smDoc.data().icon,
+      name: smDoc.data().name,
+    }));
+
+    return socialMediaList;
+  } catch (error) {
+    console.error("Error fetching social medias from the databse: ", error);
+    return [];
+  }
+};

@@ -35,6 +35,12 @@ const routes = [
   },
 
   {
+    path: "/team/create",
+    name: "Team Creation",
+    component: () => import("../views/TeamProfileCreation.vue"),
+  },
+
+  {
     path: "/teams",
     name: "Teams",
     component: () => import("../views/TeamList.vue"),
@@ -53,6 +59,11 @@ const routes = [
     component: () => import("../views/MatchOrganizer.vue"),
   },
   {
+    path: "/organization/create",
+    name: "Create Organization",
+    component: () => import("../views/OrganizationProfileCreation.vue"),
+  },
+  {
     path: "/organization/my-organization",
     name: "Match Organizer",
     component: () => import("../views/OrganizerProfileView.vue"),
@@ -65,8 +76,8 @@ const routes = [
   // player content
   {
     path: "/player/create",
-    name: "p-profile",
-    component: () => import("../views/p-profile.vue"),
+    name: "Player Profile Cretion",
+    component: () => import("../views/PlayerProfileCreation.vue"),
   },
   {
     path: "/player/my-profile",
