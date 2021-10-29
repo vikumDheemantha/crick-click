@@ -2,7 +2,7 @@ module.exports = {
   transpileDependencies: ["vuetify"],
   pwa: {
     name: "crickclick-dashboard",
-    themeColor: "#ffcf00",
+    themeColor: "#1d1e2c",
     msTileColor: "#ffcf00",
     appleMobileWebAppCache: "yes",
     manifestOptions: {
