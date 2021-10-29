@@ -61,6 +61,7 @@
 <script>
 import ImageUpload from "../common/ImageUpload.vue";
 import { createTeamWithBasicInfo } from "../../firebase/teams.firebase";
+import { upladProfileImage } from "../../firebase/imageUpload.firebase";
 import { Timestamp } from "firebase/firestore";
 
 export default {
@@ -78,12 +79,26 @@ export default {
   },
   methods: {
     async handleNext() {
+      // First save image before handling others
+      let imageUrl = null;
+      if (this.profileImage !== null && this.profileImage !== undefined) {
+        let iamgeExt = this.profileImage.name.split(".").pop();
+        let imgSaveRes = await upladProfileImage(
+          1,
+          this.profileImage,
+          iamgeExt
+        );
+        if (imgSaveRes.success) {
+          imageUrl = imgSaveRes.url;
+        }
+      }
       let playerObj = {
         name: this.name,
         email: this.email,
         mobile: this.mobile,
         address: this.address,
         type: this.type,
+        logoUrl: imageUrl,
         description: this.description,
         isActive: true,
         createdAt: Timestamp.fromDate(new Date()),

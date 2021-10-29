@@ -88,6 +88,7 @@
 <script>
 import ImageUpload from "../common/ImageUpload.vue";
 import { createPlayerWithBasicInfo } from "../../firebase/players.firebase";
+import { upladProfileImage } from "../../firebase/imageUpload.firebase";
 import { Timestamp } from "firebase/firestore";
 
 export default {
@@ -108,6 +109,19 @@ export default {
   },
   methods: {
     async handleNext() {
+      // First save image before handling others
+      let imageUrl = null;
+      if (this.profileImage !== null && this.profileImage !== undefined) {
+        let iamgeExt = this.profileImage.name.split(".").pop();
+        let imgSaveRes = await upladProfileImage(
+          1,
+          this.profileImage,
+          iamgeExt
+        );
+        if (imgSaveRes.success) {
+          imageUrl = imgSaveRes.url;
+        }
+      }
       let playerObj = {
         displayName: this.name,
         email: this.email,
@@ -117,6 +131,7 @@ export default {
         city: this.city,
         district: this.district,
         region: this.region,
+        image_url: imageUrl,
         introduction: this.description,
         skills: ["batting", "Bowling"],
         createdAt: Timestamp.fromDate(new Date()),

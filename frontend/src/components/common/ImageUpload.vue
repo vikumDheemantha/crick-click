@@ -47,6 +47,16 @@ export default {
         return require("../../assets/img/common/profile-placeholder.jpeg");
       }
     },
+    fileNameExt() {
+      if (this.image !== null && this.image !== undefined) {
+        let fileNameAr = this.image.name.split(".");
+        return fileNameAr.length !== 0
+          ? fileNameAr[fileNameAr.length - 1]
+          : null;
+      } else {
+        return null;
+      }
+    },
   },
   watch: {
     image(val) {

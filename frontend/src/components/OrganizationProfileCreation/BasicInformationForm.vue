@@ -88,6 +88,7 @@
 <script>
 import ImageUpload from "../common/ImageUpload.vue";
 import { createOrganizationWithBasicInfo } from "../../firebase/organisations.firebase";
+import { upladProfileImage } from "../../firebase/imageUpload.firebase";
 import { Timestamp } from "firebase/firestore";
 
 export default {
@@ -108,6 +109,18 @@ export default {
   },
   methods: {
     async handleNext() {
+      let imageUrl = null;
+      if (this.profileImage !== null && this.profileImage !== undefined) {
+        let iamgeExt = this.profileImage.name.split(".").pop();
+        let imgSaveRes = await upladProfileImage(
+          1,
+          this.profileImage,
+          iamgeExt
+        );
+        if (imgSaveRes.success) {
+          imageUrl = imgSaveRes.url;
+        }
+      }
       let playerObj = {
         name: this.name,
         email: this.email,
@@ -118,6 +131,7 @@ export default {
         region: this.region,
         description: this.description,
         type: this.type,
+        imgUrl: imageUrl,
         createdAt: Timestamp.fromDate(new Date()),
       };
       let res = await createOrganizationWithBasicInfo(playerObj);
