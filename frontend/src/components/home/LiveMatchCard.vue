@@ -19,7 +19,7 @@
             :aspect-ratio="1 / 1"
             :width="imageWidth"
             class="mx-auto"
-            :src="team1.url"
+            :src="team1.url ? team1.url : detfaultImage"
           ></v-img>
           <div class="text-subtitle-2 grey--text">{{ team1.name }}</div>
         </v-col>
@@ -31,7 +31,7 @@
             :aspect-ratio="1 / 1"
             :width="imageWidth"
             class="mx-auto"
-            :src="team2.url"
+            :src="team2.url ? team2.url : detfaultImage"
           ></v-img>
           <div class="text-subtitle-2 grey--text">{{ team2.name }}</div>
         </v-col>
@@ -59,6 +59,7 @@ export default {
   data() {
     return {
       imageWidth: "60%",
+      detfaultImage: require("../../assets/img/common/profile-placeholder.jpeg"),
     };
   },
 };

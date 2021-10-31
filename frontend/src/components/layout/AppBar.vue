@@ -97,22 +97,40 @@
         <v-list-item to="/organization/my-organization">
           <v-list-item-title>My Organization</v-list-item-title>
         </v-list-item>
+        <v-list-item to="/organization/create-game">
+          <v-list-item-title>Create Game</v-list-item-title>
+        </v-list-item>
         <v-list-item to="/organizations">
           <v-list-item-title>View Organizations</v-list-item-title>
+        </v-list-item>
+        <v-list-item to="/matches/updateScore">
+          <v-list-item-title>Update Score</v-list-item-title>
         </v-list-item>
       </v-list>
     </v-menu>
 
-    <v-btn
-      href="https://github.com/vuetifyjs/vuetify/releases/latest"
-      target="_blank"
-      color="secondary"
-      depressed
-      class="primary--text ml-4 mr-2 nav-btn-custom"
-    >
-      <v-icon class="nav-btn-text">mdi-account</v-icon>
-      <span class="mr-2 ml-2 nav-btn-text">User</span>
-    </v-btn>
+    <v-menu close-on-click offset-y>
+      <template v-slot:activator="{ on, attrs }">
+        <v-btn
+          color="secondary"
+          depressed
+          v-on="on"
+          v-bind="attrs"
+          class="primary--text ml-4 mr-2 nav-btn-custom"
+        >
+          <v-icon class="nav-btn-text">mdi-account</v-icon>
+          <span class="mr-2 ml-2 nav-btn-text">User</span>
+        </v-btn>
+      </template>
+      <v-list>
+        <v-list-item to="/login">
+          <v-list-item-title>Sign In</v-list-item-title>
+        </v-list-item>
+        <v-list-item to="/register">
+          <v-list-item-title>Sign Up</v-list-item-title>
+        </v-list-item>
+      </v-list>
+    </v-menu>
   </v-app-bar>
 </template>
 

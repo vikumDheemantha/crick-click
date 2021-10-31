@@ -1,5 +1,6 @@
 <template>
   <v-container>
+    <h2 class="my-2 primary--text">Create Player Prifle</h2>
     <v-stepper v-model="step" vertical>
       <v-stepper-step :complete="step > 1" step="1">
         Basic Information

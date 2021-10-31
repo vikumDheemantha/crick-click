@@ -10,9 +10,9 @@
         </div>
       </v-col>
       <v-col cols="4" class="right acent">
-        <h2>LOGIN</h2>
+        <h2>Register</h2>
         <validation-observer ref="observer">
-          <v-form >
+          <v-form @submit.prevent="submit">
             <validation-provider
               v-slot="{ errors }"
               name="Name"
@@ -49,12 +49,18 @@
               ></v-text-field>
             </validation-provider>
             <div class="text-center">
-              <v-btn class="signin-btn" rounded color="white" dark to="/">
+              <v-btn
+                class="signin-btn"
+                type="submit"
+                rounded
+                color="white"
+                dark
+              >
                 Sign In
               </v-btn>
-              <div class="mt-1">
-                do not have an account,
-                <v-btn text color="primary" to="/register">sign up</v-btn>
+              <div class="mt-2">
+                Already have a account,
+                <v-btn text color="success" to="/login">sign In</v-btn>
               </div>
             </div>
           </v-form>
@@ -105,7 +111,10 @@ export default {
   },
   methods: {
     async submit() {
-      this.$router.push("/");
+      const valid = await this.$refs.observer.validate();
+      if (valid) {
+        this.login(this.params); // action to login
+      }
     },
     clear() {
       // you can use this method to clear login form

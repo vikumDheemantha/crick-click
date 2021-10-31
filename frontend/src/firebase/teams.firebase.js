@@ -69,10 +69,10 @@ export const getAllTeams = async () => {
 export const getTeamById = async (id) => {
   const docRef = doc(db, "teams", id);
   const docSnap = await getDoc(docRef);
-  
+
   if (docSnap.exists) {
     //let socialMedia = await passSocialMedioa(docSnap.data().socialMedia);
-    
+
     let promises = [];
     promises.push(passSocialMedioa(docSnap.data().socialMedia));
     //promises.push(getDoc(docSnap.data().captain.reference));
@@ -85,8 +85,8 @@ export const getTeamById = async (id) => {
     let socialMedia = data[0];
     //console.log("captain", data[1]);
     teamInfo["socialMedia"] = socialMedia;
-    
-    return teamInfo;  
+
+    return teamInfo;
   } else {
     return {};
   }
@@ -243,5 +243,55 @@ export const addSocialMedia = async (id, socialMedia) => {
       success: false,
       message: "Could not update achievements, Please try again",
     };
+  }
+};
+
+export const searchTeamsByEmail = async (searchTxt) => {
+  try {
+    const playersRef = collection(db, "teams");
+    const searchQuery = query(playersRef, where("email", "==", searchTxt));
+    const querySnapshot = await getDocs(searchQuery);
+    return querySnapshot.docs.map((player) => ({
+      id: player.id,
+      name: player.data().displayName,
+      email: player.data().email,
+      imgUrl: player.data().image_url ? player.data().image_url : "",
+      ref: doc(db, "players", player.id),
+    }));
+  } catch (error) {
+    console.error("Error fetching players for given text due to: ", error);
+    return [];
+  }
+};
+
+export const getAllTeamsMini = async () => {
+  try {
+    const playersRef = collection(db, "teams");
+    const querySnapshot = await getDocs(playersRef);
+    return querySnapshot.docs.map((player) => ({
+      id: player.id,
+      name: player.data().name,
+      email: player.data().email,
+      imgUrl: player.data().logoUrl ? player.data().logoUrl : "",
+      ref: doc(db, "teams", player.id),
+    }));
+  } catch (error) {
+    console.error("Error fetching players for given text due to: ", error);
+    return [];
+  }
+};
+
+export const getAllPlayersInTeam = async (teamId) => {
+  try {
+    const teamRef = doc(db, "teams", teamId);
+    const documentSnap = await getDoc(teamRef);
+    if (documentSnap.exists) {
+      return documentSnap.data().players;
+    } else {
+      return [];
+    }
+  } catch (error) {
+    console.error("Error fetching players for given text due to: ", error);
+    return [];
   }
 };

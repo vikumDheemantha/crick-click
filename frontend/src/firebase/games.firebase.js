@@ -7,6 +7,7 @@ import {
   updateDoc,
   doc,
   deleteDoc,
+  setDoc,
 } from "firebase/firestore";
 import { db } from "./main";
 
@@ -95,3 +96,41 @@ function passGames(gamesSnapshot) {
 
   return games;
 }
+
+export const createGameWithBasicInfo = async (basicInfo) => {
+  let id = "game_" + new Date().getTime();
+  let gameObj = {
+    ...basicInfo,
+    orgRef: doc(db, "organisations", basicInfo.organizationId),
+  };
+
+  try {
+    let newGameRef = doc(db, "games", id);
+    await setDoc(newGameRef, gameObj);
+    return { success: true, id: id };
+  } catch (error) {
+    console.error("Error creating Game step 1: ", error);
+    return {
+      success: false,
+      message: "Could not update data base, Please try again",
+    };
+  }
+};
+
+export const addTeams = async (id, teams) => {
+  try {
+    console.log("Array of Players: ", teams);
+    console.log("Game creation ID returned from the previous: ", id);
+    let newGameRef = doc(db, "games", id);
+    console.log("reference created successfully");
+    await setDoc(newGameRef, { teams: teams }, { merge: true });
+    console.log("Document Retrieved successfully");
+    return { success: true, id: id };
+  } catch (error) {
+    console.error("Error creating team step 2: ", error);
+    return {
+      success: false,
+      message: "Could not update team players, Please try again",
+    };
+  }
+};

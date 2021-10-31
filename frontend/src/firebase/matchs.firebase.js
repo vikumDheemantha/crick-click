@@ -8,6 +8,7 @@ import {
   updateDoc,
   deleteDoc,
   doc,
+  setDoc,
 } from "firebase/firestore";
 import { db } from "./main";
 
@@ -265,5 +266,28 @@ export const getMatchesByTeam = async (teamId) => {
   } catch (error) {
     console.error("Error fetching data from the firebase: ", error);
     return [];
+  }
+};
+export const createSetOfMatches = async (matches) => {
+  console.log("matches: ", matches);
+  let res;
+  for (const match of matches) {
+    let res = await creatematch(match);
+  }
+  return { success: true };
+};
+
+const creatematch = async (match) => {
+  let id = "match_" + new Date().getTime();
+  try {
+    let newmatchRef = doc(db, "match", id);
+    await setDoc(newmatchRef, match);
+    return { success: true, id: id };
+  } catch (error) {
+    console.error("Error creating Team step 1: ", error);
+    return {
+      success: false,
+      message: "Could not update data base, Please try again",
+    };
   }
 };

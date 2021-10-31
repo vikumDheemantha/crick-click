@@ -21,6 +21,24 @@ const routes = [
       import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
 
+  {
+    path: "/login",
+    name: "Login",
+    component: () => import("../views/Login.vue"),
+    meta: {
+      layout: "EmptyLayout",
+    }
+  },
+
+  {
+    path: "/register",
+    name: "Register",
+    component: () => import("../views/Register.vue"),
+    meta: {
+      layout: "EmptyLayout",
+    }
+  },
+
   // Team related routs
   {
     path: "/teammanager",
@@ -73,6 +91,11 @@ const routes = [
     name: "Organization List",
     component: () => import("../views/OrganizationList.vue"),
   },
+  {
+    path: "/organization/create-game",
+    name: "Game Creation",
+    component: () => import("../views/GameCreation.vue"),
+  },
   // player content
   {
     path: "/player/create",
@@ -110,6 +133,11 @@ const routes = [
     path: "/matches/list",
     name: "Match List",
     component: () => import("../views/MatchSearchView.vue"),
+  },
+  {
+    path: "/matches/updateScore",
+    name: "Score Update",
+    component: () => import("../views/ScoreUpdate.vue"),
   },
 ];
 
